@@ -38,8 +38,8 @@ public class Player {
 	}
 	
 	private void initializeDefaultSkill() {
-		this.skillTab.add(SingleSkill.creation("Single Origin", 50, 20));
-		this.skillTab.add(WideSkill.creation("All-Roundly Slash", 30, 35));
+		this.skillTab.add(SingleSkill.creation("Single Origin", 25, 25));
+		this.skillTab.add(WideSkill.creation("All-Roundly Slash", 10, 35));
 	}
 	
 	public void takeDamage(int damageTaken) {

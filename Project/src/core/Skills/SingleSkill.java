@@ -8,4 +8,9 @@ public class SingleSkill extends Skill {
 	public static SingleSkill creation(String skillName, int attackDamage, int manaCost) {
 		return new SingleSkill(skillName, attackDamage, manaCost);
 	}
+	
+	@Override
+	public String toString() {
+		return " | Single Target" + super.toString();
+	}
 }

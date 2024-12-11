@@ -2,7 +2,7 @@ package core.Monsters;
 
 public class Slime extends Monster{
 	private Slime() {
-		super("Slime", 50, 5);
+		super("Slime", 50, 10);
 	}
 	
 	public static Slime creation() {

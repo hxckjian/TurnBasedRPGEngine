@@ -2,7 +2,7 @@ package core.Monsters;
 
 public class Goblin extends Monster {
 	private Goblin() {
-		super("Goblin", 100, 10);
+		super("Goblin", 100, 20);
 	}
 	
 	public static Goblin creation() {

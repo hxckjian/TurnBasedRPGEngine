@@ -8,4 +8,9 @@ public class WideSkill extends Skill {
 	public static WideSkill creation(String skillName, int attackDamage, int manaCost) {
 		return new WideSkill(skillName, attackDamage, manaCost);
 	}
+	
+	@Override
+	public String toString() {
+	    return " | Wide Target" + super.toString();
+	}
 }

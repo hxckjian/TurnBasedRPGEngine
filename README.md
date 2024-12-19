@@ -134,6 +134,9 @@ This project is designed to be extensible for additional features:
 
 **Graphical Interface:** Integrate a GUI or transition to a game engine.
 
+# Concept Art (To be implemented in game in future)
+![Character Concept](Project/artwork/concept_art.jpg)
+
 ## Author
 
 Developed by [Teh Hock Jian].

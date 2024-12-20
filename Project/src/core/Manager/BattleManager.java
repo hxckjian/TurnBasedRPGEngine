@@ -41,12 +41,14 @@ public class BattleManager {
 		ItemManager itemManager = new ItemManager();
 
 		ShopManager shop = new ShopManager();
-		shop.generateFixedInventory(Arrays.asList("Potion_50HP", "Potion_100HP", "ManaPotion_30MP"));
+		shop.generateFixedInventory(Arrays.asList("HealthPotion_50HP", "HealthPotion_100HP", "ManaPotion_30MP"));
 		shop.displayShop();
 
 		Item boughtItem = shop.buyItem(0);
 		itemManager.addItem(boughtItem);
 		itemManager.addItem(boughtItem);
+		
+		itemManager.addItem(shop.buyItem(2));
 
 		return new BattleManager(monsterManager, playerManager, itemManager);
 	}

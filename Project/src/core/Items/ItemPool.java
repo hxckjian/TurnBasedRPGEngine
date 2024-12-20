@@ -8,11 +8,14 @@ public class ItemPool {
 
     //creating fixed list of items in the Item Pool
     static {
-        ITEM_POOL.put("Potion_50HP", Potion.createPotion("Potion", 10, 50));
-        ITEM_POOL.put("Potion_100HP", Potion.createPotion("Potion", 15, 100));
+//        ITEM_POOL.put("Potion_50HP", Potion.createPotion("Potion", 10, 50));
+//        ITEM_POOL.put("Potion_100HP", Potion.createPotion("Potion", 15, 100));
+        ITEM_POOL.put("HealthPotion_50HP", HealthPotion.createPotion("Health Potion", 10, 50));
+        ITEM_POOL.put("HealthPotion_100HP", HealthPotion.createPotion("Health Potion", 15, 100));
+        ITEM_POOL.put("ManaPotion_30MP", ManaPotion.createPotion("Mana Potion", 10, 30));
 
         // Add other items as needed
-        ITEM_POOL.put("ManaPotion_30MP", new Item("Mana Potion", "Restores 30 MP", 5));
+//        ITEM_POOL.put("ManaPotion_30MP", new Item("Mana Potion", "Restores 30 MP", 5));
         ITEM_POOL.put("Elixir", new Item("Elixir", "Fully restores HP and MP", 25));
     }
 

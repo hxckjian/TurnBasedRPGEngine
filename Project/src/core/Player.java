@@ -3,8 +3,9 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
+import core.Items.HealthPotion;
 import core.Items.Item;
-import core.Items.Potion;
+import core.Items.ManaPotion;
 import core.Monsters.Monster;
 import core.Skills.SingleSkill;
 import core.Skills.Skill;
@@ -71,9 +72,13 @@ public class Player {
 	}
 	
 	public void useItem(Item item) {
-        if (item instanceof Potion) {
-            Potion potion = (Potion) item;
+        if (item instanceof HealthPotion) {
+            HealthPotion potion = (HealthPotion) item;
             this.heal(potion.getHealingAmount());
+            System.out.println(this.name + " has used " + potion.getName());
+        } else if (item instanceof ManaPotion) {
+        	ManaPotion potion = (ManaPotion) item;
+            this.restoreMana(potion.getManaAmount());
             System.out.println(this.name + " has used " + potion.getName());
         } else {
             System.out.println("Item cannot be used.");
@@ -137,6 +142,14 @@ public class Player {
 		if (this.mana < 0) {
 			this.mana = 0;
 		}
+	}
+	
+	public void restoreMana(int manaAmount) {
+		this.mana += manaAmount;
+		if (this.mana > 100) { // Assume 100 is the max mana
+	        this.mana = 100;
+	    }
+		System.out.println(this.name + " has gain " + manaAmount + " of mana!");
 	}
 	
 	public List<Skill> getAllSkills() {

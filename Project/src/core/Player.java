@@ -3,6 +3,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
+import core.Items.Elixir;
 import core.Items.HealthPotion;
 import core.Items.Item;
 import core.Items.ManaPotion;
@@ -78,6 +79,11 @@ public class Player {
             System.out.println(this.name + " has used " + potion.getName());
         } else if (item instanceof ManaPotion) {
         	ManaPotion potion = (ManaPotion) item;
+            this.restoreMana(potion.getManaAmount());
+            System.out.println(this.name + " has used " + potion.getName());
+        } else if (item instanceof Elixir) {
+        	Elixir potion = (Elixir) item;
+        	this.heal(potion.getHealingAmount());
             this.restoreMana(potion.getManaAmount());
             System.out.println(this.name + " has used " + potion.getName());
         } else {

@@ -16,7 +16,7 @@ public class ItemPool {
 
         // Add other items as needed
 //        ITEM_POOL.put("ManaPotion_30MP", new Item("Mana Potion", "Restores 30 MP", 5));
-        ITEM_POOL.put("Elixir", new Item("Elixir", "Fully restores HP and MP", 25));
+        ITEM_POOL.put("Elixir_MAX", Elixir.createPotion("Elixir", 30, 100, 100));
     }
 
     private ItemPool() {

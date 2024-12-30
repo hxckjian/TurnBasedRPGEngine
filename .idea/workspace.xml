@@ -56,7 +56,7 @@
     "project.structure.last.edited": "Libraries",
     "project.structure.proportion": "0.15136719",
     "project.structure.side.proportion": "0.2",
-    "settings.editor.selected.configurable": "preferences.lookFeel"
+    "settings.editor.selected.configurable": "project.propVCSSupport.Confirmation"
   }
 }]]></component>
   <component name="RunManager" selected="Application.MainProgram">
@@ -201,6 +201,7 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
+    <option name="RELOAD_CONTEXT" value="false" />
     <MESSAGE value="Created intellij branch" />
     <MESSAGE value="Installed javafx" />
     <MESSAGE value="added xml files" />

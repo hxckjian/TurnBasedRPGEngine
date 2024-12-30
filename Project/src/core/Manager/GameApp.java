@@ -17,7 +17,7 @@ public class GameApp extends Application {
     @Override
     public void start(Stage primaryStage) {
         Pane root = new Pane();
-        Scene scene = new Scene(root, 800, 600);  // Adjust size based on your game design
+        Scene scene = new Scene(root, 960, 720);  // Adjust size based on your game design
 
         setupGame(root);
 
@@ -37,18 +37,26 @@ public class GameApp extends Application {
     }
 
     public void loadSprites(Pane root) {
+        //Adjust width and height to prevent blur
+        final int scale = 3;
+        final int width = 64 * scale;  // Width of each frame
+        final int height = 64 * scale;  // Height of each frame
+        final int columns = 14;  // Number of columns in the sprite sheet
         Image spriteSheet = new Image("file:/Users/hockjianteh/intellij turn-based-rpg/" +
                 "TurnBasedRPGEngine/Project/" +
-                "artwork/Player/character_ninja_idle.png");
+                "artwork/Player/character_ninja_idle.png",
+                width * columns,
+                height * columns,
+                true, false);
         ImageView spriteView = new ImageView(spriteSheet);
-        spriteView.setScaleX(-2.0); // Doubles the width of the image
-        spriteView.setScaleY(2.0); // Doubles the height of the image
+//        spriteView.setSmooth(false);
+        spriteView.setPreserveRatio(true);
+        spriteView.setScaleX(-1.0); // Doubles the width of the image
+//        spriteView.setScaleY(2.0); // Doubles the height of the image
         final int count = 14;  // Number of frames in the animation
-        final int columns = 14;  // Number of columns in the sprite sheet
         final int offsetX = 0;  // X offset in the sprite sheet
         final int offsetY = 0;  // Y offset in the sprite sheet
-        final int width = 64;  // Width of each frame
-        final int height = 64;  // Height of each frame
+
 
         spriteView.setViewport(new javafx.geometry.Rectangle2D(offsetX, offsetY, width, height));
         spriteView.setX(100);  // Position on the pane

@@ -41,6 +41,8 @@ public class GameApp extends Application {
                 "TurnBasedRPGEngine/Project/" +
                 "artwork/Player/character_ninja_idle.png");
         ImageView spriteView = new ImageView(spriteSheet);
+        spriteView.setScaleX(-2.0); // Doubles the width of the image
+        spriteView.setScaleY(2.0); // Doubles the height of the image
         final int count = 14;  // Number of frames in the animation
         final int columns = 14;  // Number of columns in the sprite sheet
         final int offsetX = 0;  // X offset in the sprite sheet

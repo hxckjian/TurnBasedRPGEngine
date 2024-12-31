@@ -1,0 +1,12 @@
+.progress-bar .track {
+    -fx-background-color: transparent;
+    -fx-background-image: url('HealthBar_background.png');
+    -fx-background-size: contain;
+    -fx-background-repeat: no-repeat;
+}
+
+.progress-bar .bar {
+    -fx-background-color: transparent;
+    -fx-background-image: url('HealthBar_critical-health-filll.png');
+    -fx-background-size: cover;
+}

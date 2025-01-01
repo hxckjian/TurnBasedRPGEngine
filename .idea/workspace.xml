@@ -4,12 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="2e690723-9a46-4f37-9792-65676d313440" name="Changes" comment="Improved quality of sprite">
-      <change afterPath="$PROJECT_DIR$/Project/src/core/Manager/HealthBar_background.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Project/src/core/Manager/HealthBar_critical-health-filll.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Project/src/core/Manager/style.css" afterDir="false" />
+    <list default="true" id="2e690723-9a46-4f37-9792-65676d313440" name="Changes" comment="Added ghost sprite and health bar">
+      <change afterPath="$PROJECT_DIR$/Project/artwork/Player/character_ninja_basicattack.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Project/src/core/Manager/SpriteAnimation.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Project/artwork/Player/concept_art.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/Project/artwork/concept_art.jpg" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Project/src/core/Manager/GameApp.java" beforeDir="false" afterPath="$PROJECT_DIR$/Project/src/core/Manager/GameApp.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -90,9 +88,9 @@
       <recent name="$PROJECT_DIR$/Project/src/core/Manager" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/Project/artwork/Player" />
       <recent name="$PROJECT_DIR$/Project/src/core/Manager" />
       <recent name="$PROJECT_DIR$/Project/artwork" />
-      <recent name="$PROJECT_DIR$/Project/artwork/Player" />
     </key>
   </component>
   <component name="RunManager" selected="Application.MainProgram">
@@ -246,7 +244,15 @@
       <option name="project" value="LOCAL" />
       <updated>1735558366260</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="Added ghost sprite and health bar">
+      <option name="closed" value="true" />
+      <created>1735617904684</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1735617904684</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -268,6 +274,7 @@
     <MESSAGE value="Added Player sprite with sprite sheet" />
     <MESSAGE value="Flip and scale sprite" />
     <MESSAGE value="Improved quality of sprite" />
-    <option name="LAST_COMMIT_MESSAGE" value="Improved quality of sprite" />
+    <MESSAGE value="Added ghost sprite and health bar" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added ghost sprite and health bar" />
   </component>
 </project>

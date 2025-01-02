@@ -43,61 +43,6 @@ public class GameApp extends Application {
         // Here you could add buttons, status displays, etc.
     }
 
-    public ImageView createImageSprite(String imagePath, int frameWidth, int frameHeight, int scale, boolean flipHorizontal, boolean flipVertical, double posX, double posY, int frameCount, Pane root) {
-        ImageView spriteView = new ImageView();
-        spriteView.setImage(new Image(imagePath, frameWidth * scale * frameCount, frameHeight * scale, true, false));
-//        Image spriteSheet = new Image(imagePath, frameWidth * scale * frameCount, frameHeight * scale, true, false);
-//        ImageView spriteView = new ImageView(spriteSheet);
-
-        spriteView.setPreserveRatio(true);
-        spriteView.setFitWidth(frameWidth * scale);
-        spriteView.setFitHeight(frameHeight * scale);
-
-        if (flipHorizontal) {
-            spriteView.setScaleX(-1);
-        }
-        if (flipVertical) {
-            spriteView.setScaleY(-1);
-        }
-
-        spriteView.setViewport(new javafx.geometry.Rectangle2D(0, 0, frameWidth * scale, frameHeight * scale));
-        spriteView.setX(posX);
-        spriteView.setY(posY);
-
-//        ProgressBar progressBar = new ProgressBar(0.8);
-//        progressBar.setPrefWidth(frameWidth * scale);  // Set width to match or relate to character width
-//
-//        // VBox to hold character and progress bar
-//        VBox vbox = new VBox(5);  // 5 pixels spacing between elements
-//        vbox.getChildren().addAll(spriteView, progressBar);
-
-        root.getChildren().add(spriteView);
-
-//        vbox.setLayoutX(posX);  // X position
-//        vbox.setLayoutY(posY);   // Y position
-
-        return spriteView;
-    }
-
-    public Timeline createAnimatedSprite(ImageView spriteView, int frameWidth, int frameHeight, int scale, int frameCount, boolean infinite) {
-
-        Timeline animation = new Timeline(new KeyFrame(Duration.millis(100), e -> {
-            int currentIndex = (int) ((spriteView.getViewport().getMinX() + frameWidth * scale) / (frameWidth * scale)) % frameCount;
-            if (currentIndex < frameCount - 1) {
-                spriteView.setViewport(new javafx.geometry.Rectangle2D(currentIndex * frameWidth * scale, 0, frameWidth * scale, frameHeight * scale));
-            } else {
-                // Optionally reset or hide the sprite at the end of the animation
-                spriteView.setViewport(new javafx.geometry.Rectangle2D((frameCount - 1) * frameWidth * scale, 0, frameWidth * scale, frameHeight * scale));
-            }
-        }));
-        if (infinite) {
-            animation.setCycleCount(Animation.INDEFINITE);
-        } else {
-            animation.setCycleCount(frameCount);
-        }
-        return animation;
-    }
-
     public void loadSprites(Pane root) {
         String playerPath = "file:/Users/hockjianteh/intellij turn-based-rpg/TurnBasedRPGEngine/Project/artwork/Player/character_ninja_idle.png";
         String playerAttackPath = "file:/Users/hockjianteh/intellij turn-based-rpg/TurnBasedRPGEngine/Project/artwork/Player/character_ninja_basicattack.png";
@@ -124,12 +69,6 @@ public class GameApp extends Application {
                 false, false);
         root.getChildren().add(ghostSpriteAnimation.getSpriteView());
         ghostSpriteAnimation.startIdleAnimation();
-
-//        ImageView spriteGhost = createImageSprite("file:/Users/hockjianteh/intellij turn-based-rpg/TurnBasedRPGEngine/Project/artwork/Ghost/character_ghost_idle.png",
-//                64, 64, 3, false, false, 600, 200, 13, root);
-//        Timeline animationGhost = createAnimatedSprite(
-//                spriteGhost ,64, 64, 3, 13, true);
-//        animationGhost.play();
     }
 
     public static void main(String[] args) {

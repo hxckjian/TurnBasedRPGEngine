@@ -4,13 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="2e690723-9a46-4f37-9792-65676d313440" name="Changes" comment="Added basic attack functionality with button">
-      <change afterPath="$PROJECT_DIR$/Project/artwork/Ghost/character_ghost_attack.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    <list default="true" id="2e690723-9a46-4f37-9792-65676d313440" name="Changes" comment="Added ghost attack sprite sheet">
       <change beforePath="$PROJECT_DIR$/Project/src/core/Manager/GameApp.java" beforeDir="false" afterPath="$PROJECT_DIR$/Project/src/core/Manager/GameApp.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Project/src/core/Manager/HealthBar_background.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Project/src/core/Manager/HealthBar_critical-health-filll.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Project/src/core/Manager/character_ninja_idle.png" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -263,7 +258,15 @@
       <option name="project" value="LOCAL" />
       <updated>1735719024982</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL-00010" summary="Added ghost attack sprite sheet">
+      <option name="closed" value="true" />
+      <created>1735777788702</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1735777788702</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -287,6 +290,7 @@
     <MESSAGE value="Improved quality of sprite" />
     <MESSAGE value="Added ghost sprite and health bar" />
     <MESSAGE value="Added basic attack functionality with button" />
-    <option name="LAST_COMMIT_MESSAGE" value="Added basic attack functionality with button" />
+    <MESSAGE value="Added ghost attack sprite sheet" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added ghost attack sprite sheet" />
   </component>
 </project>

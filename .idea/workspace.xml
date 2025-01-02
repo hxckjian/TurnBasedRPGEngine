@@ -4,11 +4,13 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="2e690723-9a46-4f37-9792-65676d313440" name="Changes" comment="Added ghost sprite and health bar">
-      <change afterPath="$PROJECT_DIR$/Project/artwork/Player/character_ninja_basicattack.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Project/src/core/Manager/SpriteAnimation.java" afterDir="false" />
+    <list default="true" id="2e690723-9a46-4f37-9792-65676d313440" name="Changes" comment="Added basic attack functionality with button">
+      <change afterPath="$PROJECT_DIR$/Project/artwork/Ghost/character_ghost_attack.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Project/src/core/Manager/GameApp.java" beforeDir="false" afterPath="$PROJECT_DIR$/Project/src/core/Manager/GameApp.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Project/src/core/Manager/HealthBar_background.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Project/src/core/Manager/HealthBar_critical-health-filll.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Project/src/core/Manager/character_ninja_idle.png" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -88,6 +90,7 @@
       <recent name="$PROJECT_DIR$/Project/src/core/Manager" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/Project/artwork/Ghost" />
       <recent name="$PROJECT_DIR$/Project/artwork/Player" />
       <recent name="$PROJECT_DIR$/Project/src/core/Manager" />
       <recent name="$PROJECT_DIR$/Project/artwork" />
@@ -252,7 +255,15 @@
       <option name="project" value="LOCAL" />
       <updated>1735617904684</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="Added basic attack functionality with button">
+      <option name="closed" value="true" />
+      <created>1735719024982</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1735719024982</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -275,6 +286,7 @@
     <MESSAGE value="Flip and scale sprite" />
     <MESSAGE value="Improved quality of sprite" />
     <MESSAGE value="Added ghost sprite and health bar" />
-    <option name="LAST_COMMIT_MESSAGE" value="Added ghost sprite and health bar" />
+    <MESSAGE value="Added basic attack functionality with button" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added basic attack functionality with button" />
   </component>
 </project>

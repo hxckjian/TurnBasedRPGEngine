@@ -99,15 +99,14 @@ public class GameApp extends Application {
     }
 
     public void loadSprites(Pane root) {
-            String playerPath = "file:/Users/hockjianteh/intellij turn-based-rpg/TurnBasedRPGEngine/Project/artwork/Player/character_ninja_idle.png";
-            String playerAttackPath = "file:/Users/hockjianteh/intellij turn-based-rpg/TurnBasedRPGEngine/Project/artwork/Player/character_ninja_basicattack.png";
-            SpriteAnimation playerSpriteAnimation = SpriteAnimation.of(playerPath, playerAttackPath,
+        String playerPath = "file:/Users/hockjianteh/intellij turn-based-rpg/TurnBasedRPGEngine/Project/artwork/Player/character_ninja_idle.png";
+        String playerAttackPath = "file:/Users/hockjianteh/intellij turn-based-rpg/TurnBasedRPGEngine/Project/artwork/Player/character_ninja_basicattack.png";
+        SpriteAnimation playerSpriteAnimation = SpriteAnimation.of(playerPath, playerAttackPath,
                     100,200,
                     64, 64, 3,14,
                     true, false);
-            root.getChildren().add(playerSpriteAnimation.getSpriteView());
-            playerSpriteAnimation.startIdleAnimation();
-//            playerSpriteAnimation.startAttackAnimation(128, 6);
+        root.getChildren().add(playerSpriteAnimation.getSpriteView());
+        playerSpriteAnimation.startIdleAnimation();
 
         Button attackButton = new Button("Attack");
         attackButton.setLayoutX(100); // Set X position
@@ -116,48 +115,21 @@ public class GameApp extends Application {
 
         // Handling attack animation
         attackButton.setOnAction(event -> playerSpriteAnimation.startAttackAnimation(128, 6));
-//        ImageView idlePlayer = createImageSprite(
-//                "file:/Users/hockjianteh/intellij turn-based-rpg/TurnBasedRPGEngine/Project/artwork/Player/character_ninja_idle.png",
-//                64, 64, 3, true, false, 100, 200, 14, root
-//        );
-//        Timeline idleAnimationPlayer = createAnimatedSprite(idlePlayer,64, 64, 3, 14, true);
-//        idleAnimationPlayer.play();
-//
-//        Button attackButton = new Button("Attack");
-//        attackButton.setLayoutX(100);  // Set X position
-//        attackButton.setLayoutY(500);  // Set Y position
-//        root.getChildren().add(attackButton);
-//
-//        // Assume attack animation is larger and has different frame count
-//        attackButton.setOnAction(event -> {
-//            idleAnimationPlayer.stop(); // Stop the idle animation
-//            idlePlayer.setImage(null);
-//            double newPosX = 100 - ((128 - 64) * 3 / 2.0); // Assuming scaling factor of 3
-//            ImageView attackSprite = createImageSprite(
-//                    "file:/Users/hockjianteh/intellij turn-based-rpg/TurnBasedRPGEngine/Project/artwork/Player/character_ninja_basicattack.png",
-//                    128, 64, 3, true, false, newPosX, 200, 6, root
-//            );
-//            Timeline attackAnimationPlayer = createAnimatedSprite(attackSprite,128, 64, 3, 6, false);
-//            attackAnimationPlayer.play();
-//
-//            // Optionally, switch back to idle after attack completes
-//            attackAnimationPlayer.setOnFinished(e -> {
-//                attackAnimationPlayer.stop();
-//                attackSprite.setImage(null);
-//                idlePlayer = createImageSprite(
-//                        "file:/Users/hockjianteh/intellij turn-based-rpg/TurnBasedRPGEngine/Project/artwork/Player/character_ninja_idle.png",
-//                        64, 64, 3, true, false, 100, 200, 14, root
-//                );
-//                Timeline idleAnimationPlayer1 = createAnimatedSprite(idlePlayer,64, 64, 3, 14, true);
-//                idleAnimationPlayer1.play();
-//            });
-//        });
 
-        ImageView spriteGhost = createImageSprite("file:/Users/hockjianteh/intellij turn-based-rpg/TurnBasedRPGEngine/Project/artwork/Ghost/character_ghost_idle.png",
-                64, 64, 3, false, false, 600, 200, 13, root);
-        Timeline animationGhost = createAnimatedSprite(
-                spriteGhost ,64, 64, 3, 13, true);
-        animationGhost.play();
+        String ghostPath = "file:/Users/hockjianteh/intellij turn-based-rpg/TurnBasedRPGEngine/Project/artwork/Ghost/character_ghost_idle.png";
+        String ghostAttackPath = "file:/Users/hockjianteh/intellij turn-based-rpg/TurnBasedRPGEngine/Project/artwork/Player/character_ghost_attack.png";
+        SpriteAnimation ghostSpriteAnimation = SpriteAnimation.of(ghostPath, ghostAttackPath,
+                600,200,
+                64, 64, 3,13,
+                false, false);
+        root.getChildren().add(ghostSpriteAnimation.getSpriteView());
+        ghostSpriteAnimation.startIdleAnimation();
+
+//        ImageView spriteGhost = createImageSprite("file:/Users/hockjianteh/intellij turn-based-rpg/TurnBasedRPGEngine/Project/artwork/Ghost/character_ghost_idle.png",
+//                64, 64, 3, false, false, 600, 200, 13, root);
+//        Timeline animationGhost = createAnimatedSprite(
+//                spriteGhost ,64, 64, 3, 13, true);
+//        animationGhost.play();
     }
 
     public static void main(String[] args) {

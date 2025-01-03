@@ -13,6 +13,8 @@ public class SpriteAnimation {
     private Timeline currentAnimation = null;
     private String imageIdlePath;
     private String imageAttackPath;
+    private String imageHurtPath;
+    private String imageDeathPath;
     private double posX;
     private double posY;
     private int frameWidth;
@@ -22,12 +24,14 @@ public class SpriteAnimation {
     private boolean flipHorizontal;
     private boolean flipVertical;
 
-    private SpriteAnimation(String imageIdlePath, String imageAttackPath,
+    private SpriteAnimation(String imageIdlePath, String imageAttackPath, String imageHurtPath, String imageDeathPath,
                            double posX, double posY,
                            int frameWidth, int frameHeight, int scale, int frameCount,
                            boolean flipHorizontal, boolean flipVertical) {
         this.imageIdlePath = imageIdlePath;
         this.imageAttackPath = imageAttackPath;
+        this.imageHurtPath = imageHurtPath;
+        this.imageDeathPath = imageDeathPath;
         this.posX = posX;
         this.posY = posY;
         this.frameWidth = frameWidth;
@@ -39,11 +43,11 @@ public class SpriteAnimation {
         this.checkFlip();
     }
 
-    public static SpriteAnimation of(String imageIdlePath, String imageAttackPath,
+    public static SpriteAnimation of(String imageIdlePath, String imageAttackPath, String imageHurtPath, String imageDeathPath,
                                      double posX, double posY,
                                      int frameWidth, int frameHeight, int scale, int frameCount,
                                      boolean flipHorizontal, boolean flipVertical) {
-        return new SpriteAnimation(imageIdlePath, imageAttackPath,
+        return new SpriteAnimation(imageIdlePath, imageAttackPath, imageHurtPath, imageDeathPath,
                 posX, posY,
                 frameWidth, frameHeight, scale, frameCount,
                 flipHorizontal, flipVertical);
@@ -62,35 +66,51 @@ public class SpriteAnimation {
         }
     }
 
-    public void startIdleAnimation() {
+    public void playAnimation(String imagePath, int adjustedImageWidth, int frameCount, boolean infinite) {
         if (this.currentAnimation != null) {
             this.currentAnimation.stop();
         }
-        this.spriteView.setImage(new Image(this.imageIdlePath, this.frameWidth * this.scale * this.frameCount, this.frameHeight * this.scale, true, false));
-        this.spriteView.setViewport(new Rectangle2D(0, 0, this.frameWidth * this.scale, this.frameHeight * this.scale));
-        this.currentAnimation = new Timeline(new KeyFrame(Duration.millis(100), e -> updateAnimationFrame(64, this.frameCount)));
-        this.currentAnimation.setCycleCount(Animation.INDEFINITE);
-        this.spriteView.setLayoutX(this.posX);
+        this.spriteView.setImage(new Image(imagePath, adjustedImageWidth * this.scale * frameCount, this.frameHeight * this.scale, true, false));
+        this.spriteView.setViewport(new Rectangle2D(0, 0, adjustedImageWidth * this.scale, this.frameHeight * this.scale));
+        this.currentAnimation = new Timeline(new KeyFrame(Duration.millis(100), e -> updateAnimationFrame(adjustedImageWidth, frameCount)));
+//        this.currentAnimation.setCycleCount(Animation.INDEFINITE);
+        if (infinite) {
+            this.currentAnimation.setCycleCount(Animation.INDEFINITE);
+        } else {
+            this.currentAnimation.setCycleCount(frameCount);
+        }
+//        this.spriteView.setLayoutX(this.posX);
+        this.spriteView.setLayoutX(this.posX - ((adjustedImageWidth - this.frameWidth) * this.scale / 2.0));
         this.spriteView.setLayoutY(this.posY);
         this.currentAnimation.play();
     }
 
+    public void startIdleAnimation() {
+        this.playAnimation(this.imageIdlePath, this.frameWidth, this.frameCount, true);
+    }
+
     public void startAttackAnimation(int adjustedImageWidth, int attackFrameCount) {
-        if (this.currentAnimation != null) {
-            this.currentAnimation.stop();
-        }
-        // Assume that height is the same for now unless adjusted in future
-        // Idle animation will always be consistent
-        this.spriteView.setImage(new Image(this.imageAttackPath, adjustedImageWidth * this.scale * attackFrameCount , this.frameHeight * this.scale, true, false));
-        this.spriteView.setViewport(new Rectangle2D(0, 0, adjustedImageWidth * this.scale, this.frameHeight * this.scale));
-        this.currentAnimation = new Timeline(new KeyFrame(Duration.millis(100), e -> updateAnimationFrame(adjustedImageWidth, attackFrameCount)));
-        this.currentAnimation.setCycleCount(attackFrameCount); // Play once
-        this.spriteView.setLayoutX(this.posX - ((adjustedImageWidth - this.frameWidth) * this.scale / 2.0)); // Adjust position for larger sprite
-        this.spriteView.setLayoutY(this.posY);
-        this.currentAnimation.play();
-//
+        this.playAnimation(this.imageAttackPath, adjustedImageWidth, attackFrameCount, false);
         // Switch back to idle after attack completes
         this.currentAnimation.setOnFinished(e -> startIdleAnimation());
+    }
+
+    public void startHurtAnimation(int adjustedImageWidth, int hurtFrameCount) {
+        this.playAnimation(this.imageHurtPath, adjustedImageWidth, hurtFrameCount, false);
+        // Switch back to idle after hurt completes
+        // if check dead, start Death Animation and stop, else start Idle Animation ***
+        this.currentAnimation.setOnFinished(e -> startIdleAnimation());
+    }
+
+    public void startDeathAnimation(int adjustedImageWidth, int deathFrameCount) {
+        this.playAnimation(this.imageDeathPath, adjustedImageWidth, deathFrameCount, false);
+        this.currentAnimation.setOnFinished(e -> {
+            // Calculate the position of the last frame in the sprite sheet
+            double lastFrameX = (deathFrameCount - 1) * adjustedImageWidth * this.scale;
+
+            // Set the viewport to display only the last frame
+            this.spriteView.setViewport(new Rectangle2D(lastFrameX, 0, adjustedImageWidth * this.scale, this.frameHeight * this.scale));
+        });
     }
 
     private void updateAnimationFrame(int frameWidth, int frameCount) {

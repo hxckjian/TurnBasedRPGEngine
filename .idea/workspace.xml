@@ -4,8 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="2e690723-9a46-4f37-9792-65676d313440" name="Changes" comment="Added player hurt and death sprite sheets">
-      <change afterPath="$PROJECT_DIR$/Project/artwork/Ghost/character_ghost_death.png" afterDir="false" />
+    <list default="true" id="2e690723-9a46-4f37-9792-65676d313440" name="Changes" comment="Added ghost hurt and death sprite sheets">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Project/src/core/Manager/GameApp.java" beforeDir="false" afterPath="$PROJECT_DIR$/Project/src/core/Manager/GameApp.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Project/src/core/Manager/SpriteAnimation.java" beforeDir="false" afterPath="$PROJECT_DIR$/Project/src/core/Manager/SpriteAnimation.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -282,7 +284,15 @@
       <option name="project" value="LOCAL" />
       <updated>1735883481618</updated>
     </task>
-    <option name="localTasksCounter" value="13" />
+    <task id="LOCAL-00013" summary="Added ghost hurt and death sprite sheets">
+      <option name="closed" value="true" />
+      <created>1735883801990</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1735883801990</updated>
+    </task>
+    <option name="localTasksCounter" value="14" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -309,6 +319,7 @@
     <MESSAGE value="Added ghost attack sprite sheet" />
     <MESSAGE value="removed unncessary commenting" />
     <MESSAGE value="Added player hurt and death sprite sheets" />
-    <option name="LAST_COMMIT_MESSAGE" value="Added player hurt and death sprite sheets" />
+    <MESSAGE value="Added ghost hurt and death sprite sheets" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added ghost hurt and death sprite sheets" />
   </component>
 </project>

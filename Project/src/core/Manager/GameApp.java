@@ -46,7 +46,9 @@ public class GameApp extends Application {
     public void loadSprites(Pane root) {
         String playerPath = "file:/Users/hockjianteh/intellij turn-based-rpg/TurnBasedRPGEngine/Project/artwork/Player/character_ninja_idle.png";
         String playerAttackPath = "file:/Users/hockjianteh/intellij turn-based-rpg/TurnBasedRPGEngine/Project/artwork/Player/character_ninja_basicattack.png";
-        SpriteAnimation playerSpriteAnimation = SpriteAnimation.of(playerPath, playerAttackPath,
+        String playerHurtPath = "file:/Users/hockjianteh/intellij turn-based-rpg/TurnBasedRPGEngine/Project/artwork/Player/character_ninja_hurt.png";
+        String playerDeathPath = "file:/Users/hockjianteh/intellij turn-based-rpg/TurnBasedRPGEngine/Project/artwork/Player/character_ninja_death.png";
+        SpriteAnimation playerSpriteAnimation = SpriteAnimation.of(playerPath, playerAttackPath, playerHurtPath, playerDeathPath,
                     100,200,
                     64, 64, 3,14,
                     true, false);
@@ -61,9 +63,28 @@ public class GameApp extends Application {
         // Handling attack animation
         attackButton.setOnAction(event -> playerSpriteAnimation.startAttackAnimation(128, 6));
 
+        Button hurtButton = new Button("Hurt");
+        hurtButton.setLayoutX(160); // Set X position
+        hurtButton.setLayoutY(500); // Set Y position
+        root.getChildren().add(hurtButton);
+
+        // Handling attack animation
+        hurtButton.setOnAction(event -> playerSpriteAnimation.startHurtAnimation(64, 2));
+
+        Button deathButton = new Button("Death");
+        deathButton.setLayoutX(200); // Set X position
+        deathButton.setLayoutY(500); // Set Y position
+        root.getChildren().add(deathButton);
+
+        // Handling attack animation
+        deathButton.setOnAction(event -> playerSpriteAnimation.startDeathAnimation(128, 5));
+
+
         String ghostPath = "file:/Users/hockjianteh/intellij turn-based-rpg/TurnBasedRPGEngine/Project/artwork/Ghost/character_ghost_idle.png";
         String ghostAttackPath = "file:/Users/hockjianteh/intellij turn-based-rpg/TurnBasedRPGEngine/Project/artwork/Ghost/character_ghost_attack.png";
-        SpriteAnimation ghostSpriteAnimation = SpriteAnimation.of(ghostPath, ghostAttackPath,
+        String ghostHurtPath = "file:/Users/hockjianteh/intellij turn-based-rpg/TurnBasedRPGEngine/Project/artwork/Ghost/character_ghost_hurt.png";
+        String ghostDeathPath = "file:/Users/hockjianteh/intellij turn-based-rpg/TurnBasedRPGEngine/Project/artwork/Ghost/character_ghost_death.png";
+        SpriteAnimation ghostSpriteAnimation = SpriteAnimation.of(ghostPath, ghostAttackPath, ghostHurtPath, ghostDeathPath,
                 600,200,
                 64, 64, 3,13,
                 false, false);

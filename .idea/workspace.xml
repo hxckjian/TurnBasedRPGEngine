@@ -4,8 +4,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="2e690723-9a46-4f37-9792-65676d313440" name="Changes" comment="Added ghost attack sprite sheet">
+    <list default="true" id="2e690723-9a46-4f37-9792-65676d313440" name="Changes" comment="removed unncessary commenting">
+      <change afterPath="$PROJECT_DIR$/Project/artwork/Player/character_ninja_death.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Project/artwork/Ghost/character_ghost_attack.png" beforeDir="false" afterPath="$PROJECT_DIR$/Project/artwork/Ghost/character_ghost_attack.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Project/src/core/Manager/GameApp.java" beforeDir="false" afterPath="$PROJECT_DIR$/Project/src/core/Manager/GameApp.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Project/src/core/Manager/SpriteAnimation.java" beforeDir="false" afterPath="$PROJECT_DIR$/Project/src/core/Manager/SpriteAnimation.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -85,8 +89,8 @@
       <recent name="$PROJECT_DIR$/Project/src/core/Manager" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/Project/artwork/Ghost" />
       <recent name="$PROJECT_DIR$/Project/artwork/Player" />
+      <recent name="$PROJECT_DIR$/Project/artwork/Ghost" />
       <recent name="$PROJECT_DIR$/Project/src/core/Manager" />
       <recent name="$PROJECT_DIR$/Project/artwork" />
     </key>
@@ -266,7 +270,15 @@
       <option name="project" value="LOCAL" />
       <updated>1735777788702</updated>
     </task>
-    <option name="localTasksCounter" value="11" />
+    <task id="LOCAL-00011" summary="removed unncessary commenting">
+      <option name="closed" value="true" />
+      <created>1735777888929</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1735777888929</updated>
+    </task>
+    <option name="localTasksCounter" value="12" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -291,6 +303,7 @@
     <MESSAGE value="Added ghost sprite and health bar" />
     <MESSAGE value="Added basic attack functionality with button" />
     <MESSAGE value="Added ghost attack sprite sheet" />
-    <option name="LAST_COMMIT_MESSAGE" value="Added ghost attack sprite sheet" />
+    <MESSAGE value="removed unncessary commenting" />
+    <option name="LAST_COMMIT_MESSAGE" value="removed unncessary commenting" />
   </component>
 </project>

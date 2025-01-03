@@ -62,13 +62,22 @@ public class GameApp extends Application {
         attackButton.setOnAction(event -> playerSpriteAnimation.startAttackAnimation(128, 6));
 
         String ghostPath = "file:/Users/hockjianteh/intellij turn-based-rpg/TurnBasedRPGEngine/Project/artwork/Ghost/character_ghost_idle.png";
-        String ghostAttackPath = "file:/Users/hockjianteh/intellij turn-based-rpg/TurnBasedRPGEngine/Project/artwork/Player/character_ghost_attack.png";
+        String ghostAttackPath = "file:/Users/hockjianteh/intellij turn-based-rpg/TurnBasedRPGEngine/Project/artwork/Ghost/character_ghost_attack.png";
         SpriteAnimation ghostSpriteAnimation = SpriteAnimation.of(ghostPath, ghostAttackPath,
                 600,200,
                 64, 64, 3,13,
                 false, false);
         root.getChildren().add(ghostSpriteAnimation.getSpriteView());
         ghostSpriteAnimation.startIdleAnimation();
+
+        Button attackButton1 = new Button("Attack");
+        attackButton1.setLayoutX(600); // Set X position
+        attackButton1.setLayoutY(500); // Set Y position
+        root.getChildren().add(attackButton1);
+
+        // Handling attack animation
+        attackButton1.setOnAction(event -> ghostSpriteAnimation.startAttackAnimation(128, 26));
+
     }
 
     public static void main(String[] args) {

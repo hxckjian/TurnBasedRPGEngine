@@ -83,7 +83,7 @@ public class SpriteAnimation {
         // Idle animation will always be consistent
         this.spriteView.setImage(new Image(this.imageAttackPath, adjustedImageWidth * this.scale * attackFrameCount , this.frameHeight * this.scale, true, false));
         this.spriteView.setViewport(new Rectangle2D(0, 0, adjustedImageWidth * this.scale, this.frameHeight * this.scale));
-        this.currentAnimation = new Timeline(new KeyFrame(Duration.millis(100), e -> updateAnimationFrame(128, attackFrameCount)));
+        this.currentAnimation = new Timeline(new KeyFrame(Duration.millis(100), e -> updateAnimationFrame(adjustedImageWidth, attackFrameCount)));
         this.currentAnimation.setCycleCount(attackFrameCount); // Play once
         this.spriteView.setLayoutX(this.posX - ((adjustedImageWidth - this.frameWidth) * this.scale / 2.0)); // Adjust position for larger sprite
         this.spriteView.setLayoutY(this.posY);

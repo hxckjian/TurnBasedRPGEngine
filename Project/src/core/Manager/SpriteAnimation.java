@@ -53,7 +53,17 @@ public class SpriteAnimation {
                 flipHorizontal, flipVertical);
     }
 
+    public static SpriteAnimation idle(String imageIdlePath,
+                                     int frameWidth, int frameHeight, int scale, int frameCount,
+                                     boolean flipHorizontal, boolean flipVertical) {
+        return new SpriteAnimation(imageIdlePath, null, null, null,
+                0, 0,
+                frameWidth, frameHeight, scale, frameCount,
+                flipHorizontal, flipVertical);
+    }
+
     public ImageView getSpriteView() {
+        this.spriteView.setViewport(new Rectangle2D(0, 0, this.frameWidth * this.scale, this.frameHeight * this.scale));
         return this.spriteView;
     }
 
@@ -83,6 +93,14 @@ public class SpriteAnimation {
         this.spriteView.setLayoutX(this.posX - ((adjustedImageWidth - this.frameWidth) * this.scale / 2.0));
         this.spriteView.setLayoutY(this.posY);
         this.currentAnimation.play();
+    }
+
+    public void removeAnimation() {
+        if (this.currentAnimation != null) {
+            this.currentAnimation.stop();
+        }
+        this.spriteView.setImage(null);
+//        this.spriteView.setViewport(null);
     }
 
     public void startIdleAnimation() {

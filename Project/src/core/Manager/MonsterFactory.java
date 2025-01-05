@@ -5,14 +5,16 @@ import java.util.Random;
 import core.Monsters.Goblin;
 import core.Monsters.Monster;
 import core.Monsters.Slime;
+import core.Monsters.Ghost;
 
 public class MonsterFactory {
     private static final Random RANDOM = new Random();
 
     // Define the pool of monsters
     private static final Monster[] MONSTER_POOL = {
-        Slime.creation(),
-        Goblin.creation()
+            Slime.creation(),
+            Goblin.creation(),
+            Ghost.creation()
         // Add more monster types here
     };
 

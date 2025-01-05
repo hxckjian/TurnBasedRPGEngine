@@ -34,41 +34,14 @@ public class GameApp extends Application {
 
         BorderPane root = new BorderPane();
         root.setStyle("-fx-background-color: black;");
-        VBox menuBox = new VBox(10);
-        menuBox.setAlignment(Pos.CENTER);
 
-        String[] labels = {"Attack", "Items", "Skill"};
-//        menuPanes = new StackPane[labels.length];
-        this.menuItems = new MenuItem[labels.length];
-        for (int i = 0; i < labels.length; i++) {
-            Label label = new Label(labels[i]);
-            label.setFont(new Font("Arial", 16));
-            label.setTextFill(Color.WHITE);
+        String[] menuOptions = {"Start Game", "Options", "Exit"};
+        MenuManager menuManager = new MenuManager(menuOptions, Pos.CENTER, 10);
 
-            /*
-             * *** Pointer ***
-             * Idle - 32px x 32px, 8 Frames
-             */
-
-            String pointerPath = "file:/Users/hockjianteh/intellij turn-based-rpg/TurnBasedRPGEngine/Project/artwork/Pointer.png";
-            SpriteAnimation pointerAnimation = SpriteAnimation.idle(pointerPath,
-                    32, 32, 1,8,
-                    false, false);
-
-            StackPane stackPane = new StackPane();
-            stackPane.getChildren().add(pointerAnimation.getSpriteView());
-            stackPane.getChildren().add(label);
-
-            StackPane.setMargin(pointerAnimation.getSpriteView(), new Insets(0,100,0,0) );
-            this.menuItems[i] = new MenuItem(stackPane, pointerAnimation);
-            menuBox.getChildren().add(stackPane);
-        }
-        updateSelection();
-
-        root.setBottom(menuBox);
+        root.setBottom(menuManager.getMenuBox());
         // Set up the scene and stage
         Scene scene = new Scene(root, 960, 720);
-        scene.setOnKeyPressed(event -> handleKeyPress(event.getCode()));
+        scene.setOnKeyPressed(event -> menuManager.handleKeyPress(event.getCode()));
 
         setupGame(root);
 
@@ -78,38 +51,6 @@ public class GameApp extends Application {
         root.requestFocus();
     }
 
-    private void handleKeyPress(KeyCode keyCode) {
-        System.out.println("Key Pressed: " + keyCode);
-        switch (keyCode) {
-            case UP:
-                if (currentIndex > 0) currentIndex--;
-                break;
-            case DOWN:
-                if (currentIndex < this.menuItems.length - 1) currentIndex++;
-                break;
-            case ENTER:
-                if (currentIndex == 0) {
-//                    System.out.println("Entered Key");
-                }
-                break;
-            default:
-                break;
-        }
-        updateSelection();
-    }
-
-    private void updateSelection() {
-        for (int i = 0; i < this.menuItems.length; i++) {
-            Label label = (Label) this.menuItems[i].pane.getChildren().get(1);
-            if (i == currentIndex) {
-//                label.setTextFill(Color.RED);
-                this.menuItems[i].animation.startIdleAnimation();  // Start animation for the selected item
-            } else {
-//                label.setTextFill(Color.WHITE);
-                this.menuItems[i].animation.removeAnimation();  // Stop animation for non-selected items
-            }
-        }
-    }
     private void setupGame(Pane root) {
         // Initialize your game managers and pass them to the controllers/views
         core.Manager.BattleManager battleManager = core.Manager.BattleManager.createBattle();
@@ -177,7 +118,7 @@ public class GameApp extends Application {
         String ghostHurtPath = "file:/Users/hockjianteh/intellij turn-based-rpg/TurnBasedRPGEngine/Project/artwork/Ghost/character_ghost_hurt.png";
         String ghostDeathPath = "file:/Users/hockjianteh/intellij turn-based-rpg/TurnBasedRPGEngine/Project/artwork/Ghost/character_ghost_death.png";
         SpriteAnimation ghostSpriteAnimation = SpriteAnimation.of(ghostPath, ghostAttackPath, ghostHurtPath, ghostDeathPath,
-                600,150,
+                0,0,
                 64, 64, 3,13,
                 false, false);
         String pointerPath = "file:/Users/hockjianteh/intellij turn-based-rpg/TurnBasedRPGEngine/Project/artwork/Pointer.png";

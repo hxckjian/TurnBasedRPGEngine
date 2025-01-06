@@ -47,8 +47,12 @@ public class Monster {
 	}
 
 	//Immutable
-	public SpriteAnimation getMonsterAnimation() {
+	public SpriteAnimation getImmutableMonsterAnimation() {
 		return new SpriteAnimation(this.monsterAnimation);
+	}
+
+	public SpriteAnimation getMonsterAnimation() {
+		return this.monsterAnimation;
 	}
 
 	public SpriteAnimation getPointerAnimation() {

@@ -100,6 +100,9 @@ public class SpriteAnimation {
             this.spriteView.setScaleY(-1);
         }
     }
+    public void stop() {
+        this.currentAnimation.stop();
+    }
 
     public void playAnimation(String imagePath, int adjustedImageWidth, int frameCount, boolean infinite) {
         if (this.currentAnimation != null) {
@@ -129,10 +132,15 @@ public class SpriteAnimation {
     }
 
     public void startIdleAnimation() {
+        this.spriteView.setTranslateX(0); // Adjust this value to control the overlap
+        this.spriteView.setTranslateY(0);
         this.playAnimation(this.imageIdlePath, this.frameWidth, this.frameCount, true);
     }
 
     public void startAttackAnimation(int adjustedImageWidth, int attackFrameCount) {
+//        this.spriteView.setTranslateX(-96); // Adjust this value to control the overlap
+        this.spriteView.setTranslateX(-(adjustedImageWidth * this.scale / 4));
+        this.spriteView.setTranslateY(0);
         this.playAnimation(this.imageAttackPath, adjustedImageWidth, attackFrameCount, false);
         // Switch back to idle after attack completes
         this.currentAnimation.setOnFinished(e -> startIdleAnimation());

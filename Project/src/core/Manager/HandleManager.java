@@ -1,6 +1,7 @@
 package core.Manager;
 
 import core.Monsters.Monster;
+import core.Player;
 import javafx.scene.Scene;
 
 import java.awt.*;
@@ -46,6 +47,12 @@ public class HandleManager {
         //Auto select first
         this.menuManager.selectFirstOption();
         this.scene.setOnKeyPressed(event -> this.menuManager.handleKeyPress(event.getCode()));
+    }
+
+    public void playerAttacksEnemy(int targetIndex) {
+        Player player = this.playerManager.getSpecificPlayer(0);
+        Monster target = this.monsterManager.getSpecificMonster(targetIndex);
+        player.basicAttack(target);
     }
 
     public Scene getScene() {

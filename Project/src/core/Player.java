@@ -7,6 +7,7 @@ import core.Items.Elixir;
 import core.Items.HealthPotion;
 import core.Items.Item;
 import core.Items.ManaPotion;
+import core.Manager.SpriteAnimation;
 import core.Monsters.Monster;
 import core.Skills.SingleSkill;
 import core.Skills.Skill;
@@ -24,7 +25,24 @@ public class Player {
 	
 	//Player has a list of skills
 	private List<Skill> skillTab;
-	
+
+	/*
+	 * *** Player ***
+	 * Idle - 64px x 64px, 14 Frames
+	 * Attack - 128px x 64px, 6 Frames
+	 * Hurt - 64px x 64px, 2 Frames
+	 * Death - 128px x 64px, 5 Frames
+	 */
+
+	private SpriteAnimation pointerAnimation = SpriteAnimation.pointerAnimation(2,true,false);
+	String playerPath = "file:/Users/hockjianteh/intellij turn-based-rpg/TurnBasedRPGEngine/Project/artwork/Player/character_ninja_idle.png";
+	String playerAttackPath = "file:/Users/hockjianteh/intellij turn-based-rpg/TurnBasedRPGEngine/Project/artwork/Player/character_ninja_basicattack.png";
+	String playerHurtPath = "file:/Users/hockjianteh/intellij turn-based-rpg/TurnBasedRPGEngine/Project/artwork/Player/character_ninja_hurt.png";
+	String playerDeathPath = "file:/Users/hockjianteh/intellij turn-based-rpg/TurnBasedRPGEngine/Project/artwork/Player/character_ninja_death.png";
+	private SpriteAnimation playerSpriteAnimation = SpriteAnimation.of(playerPath, playerAttackPath, playerHurtPath, playerDeathPath,
+			64, 64, 3,14,
+			true, false);
+
 	public Player() {
 		this.name = "Player1";
 		this.health = 100;
@@ -70,6 +88,9 @@ public class Player {
 		int damageDealt = this.addCriticalDamage(this.attackDamage);
 	    monster.takeDamage(damageDealt);
 	    System.out.println(this.name + " has dealt " + damageDealt + " damage to " + monster.toString());
+
+		//ATTACK ANIMATION
+		this.playerSpriteAnimation.startAttackAnimation(128, 6);
 	}
 	
 	public void useItem(Item item) {
@@ -185,4 +206,13 @@ public class Player {
 	public int getMana() {
 		return this.mana;
 	}
+
+	public SpriteAnimation getPlayerSpriteAnimation() {
+		return this.playerSpriteAnimation;
+	}
+
+	public SpriteAnimation getPointerAnimation() {
+		return this.pointerAnimation;
+	}
+
 }

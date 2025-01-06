@@ -39,7 +39,7 @@ public class MenuManager {
             stackPane.getChildren().add(pointerAnimation.getSpriteView());
             stackPane.getChildren().add(label);
 
-            StackPane.setMargin(pointerAnimation.getSpriteView(), new Insets(0,150,0,0) );
+            StackPane.setMargin(pointerAnimation.getSpriteView(), new Insets(0,100,0,0) );
 
             MenuItem menuItem = new MenuItem(stackPane, pointerAnimation);
             menuItems[i] = menuItem;
@@ -93,6 +93,16 @@ public class MenuManager {
             System.out.println("ATTACK!!!!");
             this.menuItems[0].animation.removeAnimation();
             HandleManager.getInstance().MonsterSelection();
+        }
+        if (index == 1) {
+            HandleManager
+                    .getInstance()
+                    .getPlayerManager()
+                    .getSpecificPlayer(0)
+                    .getPlayerSpriteAnimation()
+                    .startAttackAnimation(128, 6);
+            System.out.println("Test");
+
         }
     }
 

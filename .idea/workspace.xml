@@ -4,10 +4,18 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="2e690723-9a46-4f37-9792-65676d313440" name="Changes" comment="Able to implement HandleManager to smoothly switch between Selection">
+    <list default="true" id="2e690723-9a46-4f37-9792-65676d313440" name="Changes" comment="Removed Commenting">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Project/artwork/Player/character_ninja_basicattack.png" beforeDir="false" afterPath="$PROJECT_DIR$/Project/artwork/Player/character_ninja_basicattack.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Project/src/core/Manager/GameApp.java" beforeDir="false" afterPath="$PROJECT_DIR$/Project/src/core/Manager/GameApp.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Project/src/core/Manager/HandleManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/Project/src/core/Manager/HandleManager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Project/src/core/Manager/MenuManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/Project/src/core/Manager/MenuManager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Project/src/core/Manager/MonsterFactory.java" beforeDir="false" afterPath="$PROJECT_DIR$/Project/src/core/Manager/MonsterFactory.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Project/src/core/Manager/MonsterManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/Project/src/core/Manager/MonsterManager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Project/src/core/Manager/SpriteAnimation.java" beforeDir="false" afterPath="$PROJECT_DIR$/Project/src/core/Manager/SpriteAnimation.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Project/src/core/Monsters/Ghost.java" beforeDir="false" afterPath="$PROJECT_DIR$/Project/src/core/Monsters/Ghost.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Project/src/core/Monsters/Monster.java" beforeDir="false" afterPath="$PROJECT_DIR$/Project/src/core/Monsters/Monster.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Project/src/core/Player.java" beforeDir="false" afterPath="$PROJECT_DIR$/Project/src/core/Player.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -87,9 +95,9 @@
       <recent name="$PROJECT_DIR$/Project/src/core/Manager" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/Project/artwork/Player" />
       <recent name="$PROJECT_DIR$/Project/artwork" />
       <recent name="$PROJECT_DIR$/Project/artwork/Ghost" />
-      <recent name="$PROJECT_DIR$/Project/artwork/Player" />
       <recent name="$PROJECT_DIR$/Project/src/core/Manager" />
     </key>
   </component>
@@ -340,7 +348,15 @@
       <option name="project" value="LOCAL" />
       <updated>1736147057683</updated>
     </task>
-    <option name="localTasksCounter" value="20" />
+    <task id="LOCAL-00020" summary="Removed Commenting">
+      <option name="closed" value="true" />
+      <created>1736147163614</created>
+      <option name="number" value="00020" />
+      <option name="presentableId" value="LOCAL-00020" />
+      <option name="project" value="LOCAL" />
+      <updated>1736147163614</updated>
+    </task>
+    <option name="localTasksCounter" value="21" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -374,6 +390,7 @@
     <MESSAGE value="Added Menu Manager" />
     <MESSAGE value="Able to use pointer to choose between enemies" />
     <MESSAGE value="Able to implement HandleManager to smoothly switch between Selection" />
-    <option name="LAST_COMMIT_MESSAGE" value="Able to implement HandleManager to smoothly switch between Selection" />
+    <MESSAGE value="Removed Commenting" />
+    <option name="LAST_COMMIT_MESSAGE" value="Removed Commenting" />
   </component>
 </project>

@@ -74,6 +74,8 @@ public class GameApp extends Application {
     }
 
     public void loadSprites(Pane root) {
+        setupPlayers(root);
+        setupMonsters(root);
         /*
          * *** Player ***
          * Idle - 64px x 64px, 14 Frames
@@ -82,16 +84,16 @@ public class GameApp extends Application {
          * Death - 128px x 64px, 5 Frames
          */
 
-        String playerPath = "file:/Users/hockjianteh/intellij turn-based-rpg/TurnBasedRPGEngine/Project/artwork/Player/character_ninja_idle.png";
-        String playerAttackPath = "file:/Users/hockjianteh/intellij turn-based-rpg/TurnBasedRPGEngine/Project/artwork/Player/character_ninja_basicattack.png";
-        String playerHurtPath = "file:/Users/hockjianteh/intellij turn-based-rpg/TurnBasedRPGEngine/Project/artwork/Player/character_ninja_hurt.png";
-        String playerDeathPath = "file:/Users/hockjianteh/intellij turn-based-rpg/TurnBasedRPGEngine/Project/artwork/Player/character_ninja_death.png";
-        SpriteAnimation playerSpriteAnimation = SpriteAnimation.of(playerPath, playerAttackPath, playerHurtPath, playerDeathPath,
-//                100,200,
-                64, 64, 3,14,
-                true, false);
-        root.getChildren().add(playerSpriteAnimation.getSpriteView());
-        playerSpriteAnimation.startIdleAnimation();
+//        String playerPath = "file:/Users/hockjianteh/intellij turn-based-rpg/TurnBasedRPGEngine/Project/artwork/Player/character_ninja_idle.png";
+//        String playerAttackPath = "file:/Users/hockjianteh/intellij turn-based-rpg/TurnBasedRPGEngine/Project/artwork/Player/character_ninja_basicattack.png";
+//        String playerHurtPath = "file:/Users/hockjianteh/intellij turn-based-rpg/TurnBasedRPGEngine/Project/artwork/Player/character_ninja_hurt.png";
+//        String playerDeathPath = "file:/Users/hockjianteh/intellij turn-based-rpg/TurnBasedRPGEngine/Project/artwork/Player/character_ninja_death.png";
+//        SpriteAnimation playerSpriteAnimation = SpriteAnimation.of(playerPath, playerAttackPath, playerHurtPath, playerDeathPath,
+////                100,200,
+//                64, 64, 3,14,
+//                true, false);
+//        root.getChildren().add(playerSpriteAnimation.getSpriteView());
+//        playerSpriteAnimation.startIdleAnimation();
 
 //        Button attackButton = new Button("Attack");
 //        attackButton.setLayoutX(100); // Set X position
@@ -175,7 +177,44 @@ public class GameApp extends Application {
 //
 //        // Handling attack animation
 //        attackButton1.setOnAction(event -> ghostSpriteAnimation.startAttackAnimation(128, 26));
-        setupMonsters(root);
+
+
+    }
+
+    public void setupPlayers(Pane root) {
+//        for (int i = 0; i < 2; i++) {
+            Player currentPlayer = HandleManager.getInstance().getPlayerManager().getSpecificPlayer(0);
+            SpriteAnimation playerAnimation = currentPlayer.getPlayerSpriteAnimation();
+            SpriteAnimation pointerAnimation = currentPlayer.getPointerAnimation();
+            ImageView pixelArtView = playerAnimation.getSpriteView();
+            ImageView pointerView = pointerAnimation.getSpriteView();
+
+            HBox hbox = new HBox(0); // Horizontal spacing between the views
+            hbox.setAlignment(Pos.CENTER_LEFT); // Ensures vertical centering of children
+
+            // Create and configure the pixelArtView
+//        pixelArtView.setFitHeight(100); // Example height, adjust as needed
+            pixelArtView.setPreserveRatio(true);
+            pixelArtView.setTranslateX(0);
+            pixelArtView.setTranslateY(0);
+
+            // Create and configure the pointerView
+            pointerView.setPreserveRatio(true);
+            pointerView.setTranslateX(50); // Adjust this value to control the overlap
+            pointerView.setTranslateY(0);
+            // Add both ImageView to the HBox
+            hbox.getChildren().addAll(pointerView, pixelArtView);
+
+            playerAnimation.startIdleAnimation();
+//            pointerAnimation.startIdleAnimation();
+//            currentMonster.getPointerAnimation().startIdleAnimation();
+
+            //Position
+            hbox.setLayoutX(80);
+            hbox.setLayoutY(300);
+            root.getChildren().add(hbox);
+
+//        }
 
     }
 
@@ -214,6 +253,8 @@ public class GameApp extends Application {
         }
 
     }
+
+
 
     public static void main(String[] args) {
         launch(args);

@@ -50,6 +50,8 @@ public class MonsterManager {
 				break;
 			case ENTER:
 //				executeMenuItem(currentIndex);
+				//ATTACKKKKKKKKK!!!!!!
+				HandleManager.getInstance().playerAttacksEnemy(currentIndex);
 				break;
 			case ESCAPE:
 				HandleManager.getInstance().MenuSelection();

@@ -34,7 +34,7 @@ public class MonsterFactory {
         int randomizedHealth = template.getHealth() + RANDOM.nextInt(21) - 10; // ±10 variation
         int randomizedAttack = template.getAttackDamage() + RANDOM.nextInt(3) - 1; // ±1 variation
         
-        return new Monster(template.toString(), Math.max(randomizedHealth, 1), Math.max(randomizedAttack, 1), template.getMonsterAnimation());
+        return new Monster(template.toString(), Math.max(randomizedHealth, 1), Math.max(randomizedAttack, 1), template.getImmutableMonsterAnimation());
     }
 
 }

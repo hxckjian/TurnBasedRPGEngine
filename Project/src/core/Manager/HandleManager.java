@@ -39,7 +39,7 @@ public class HandleManager {
 
     public void MonsterSelection() {
         //Auto Select First Monster
-        this.monsterManager.selectFirstMonster();
+        this.monsterManager.selectFirstAlive();
         this.scene.setOnKeyPressed(event -> this.monsterManager.handleKeyPress(event.getCode()));
     }
 
@@ -49,10 +49,15 @@ public class HandleManager {
         this.scene.setOnKeyPressed(event -> this.menuManager.handleKeyPress(event.getCode()));
     }
 
-    public void playerAttacksEnemy(int targetIndex) {
+    public void playerAttacksEnemy(int selectedIndex) {
         Player player = this.playerManager.getSpecificPlayer(0);
-        Monster target = this.monsterManager.getSpecificMonster(targetIndex);
+        Monster target = this.monsterManager.getSpecificMonster(
+                this.monsterManager.getAliveList()[selectedIndex]
+        );
         player.basicAttack(target);
+        if (!target.isAlive()) {
+            this.monsterManager.removeElementByIndex(selectedIndex);
+        }
 
         //Return to Menu Selection
         this.MenuSelection();

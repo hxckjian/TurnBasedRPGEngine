@@ -10,9 +10,11 @@ import javafx.scene.input.KeyCode;
 public class MonsterManager {
 	List<Monster> monsterList;
 	private int currentIndex = 0;
+	private int[] aliveList;
 	
 	private MonsterManager(List<Monster> monsterList) {
 		this.monsterList = monsterList;
+		this.aliveList = this.getAliveMonstersIndex();
 	}
 	
 //	//Testing of fixed creation
@@ -34,19 +36,54 @@ public class MonsterManager {
 	public List<Monster> getAllMonsters() {
 		return this.monsterList;
 	}
-	
+
+	public int[] getAliveMonstersIndex() {
+		int[] test = new int[this.monsterList.size()];
+		for (int i = 0; i < this.getMonsterSize(); i++) {
+			test[i] = i;
+		}
+		return test;
+	}
+
+	public void removeElementByIndex(int indexToRemove) {
+		// Check if the index is valid
+		if (indexToRemove < 0 || indexToRemove >= aliveList.length) {
+			throw new IllegalArgumentException("Index out of bounds");
+		}
+
+		// Create a new array that is one element smaller
+		int[] newAliveList = new int[this.aliveList.length - 1];
+
+		// Copy elements from the original array to the new array, skipping the index to remove
+		for (int i = 0, j = 0; i < this.aliveList.length; i++) {
+			if (i != indexToRemove) {
+				newAliveList[j++] = this.aliveList[i];
+			}
+		}
+
+		// Update the aliveList reference to point to the new array
+		this.aliveList = newAliveList;
+	}
+
+	public int getALiveListLength() {
+		return this.aliveList.length;
+	}
+
 	public int getMonsterSize() {
 		return this.monsterList.size();
 	}
 
 	public void handleKeyPress(KeyCode keyCode) {
 		System.out.println(keyCode);
+		System.out.println("Selected Index: " + currentIndex );
 		switch (keyCode) {
 			case UP:
-				if (currentIndex > 0) currentIndex--;
+				if (currentIndex > 0)  {
+					currentIndex--;
+				}
 				break;
 			case DOWN:
-				if (currentIndex < this.getMonsterSize() - 1) currentIndex++;
+				if (currentIndex < this.getALiveListLength() - 1) currentIndex++;
 				break;
 			case ENTER:
 //				executeMenuItem(currentIndex);
@@ -63,17 +100,19 @@ public class MonsterManager {
 		if (keyCode != KeyCode.ESCAPE && keyCode != KeyCode.ENTER) {
 			this.updateSelection();
 		} else {
+			this.currentIndex = 0;
 			this.unselectAll();
 		}
 	}
 
 	private void updateSelection() {
-		for (int i = 0; i < this.getMonsterSize(); i++) {
+		System.out.println(this.aliveList[currentIndex]);
+		for (int i = 0; i < this.getALiveListLength(); i++) {
 //            Label label = menuItems[i].getLabel();
 			if (i == currentIndex) {
-				this.getSpecificMonster(i).selectedMonster();
+				this.getSpecificMonster(this.aliveList[currentIndex]).selectedMonster();
 			} else {
-				this.getSpecificMonster(i).unselectedMonster();
+				this.getSpecificMonster(this.aliveList[i]).unselectedMonster();
 			}
 		}
 	}
@@ -84,10 +123,16 @@ public class MonsterManager {
 		}
 	}
 
-	public void selectFirstMonster() {
-		this.getSpecificMonster(0).selectedMonster();
+	public int[] getAliveList() {
+		return this.aliveList;
 	}
-	
+
+	public void selectFirstAlive() {
+		if (!this.checkAllDead()) {
+			this.getSpecificMonster(this.aliveList[0]).selectedMonster();
+		}
+	}
+
 	public Monster getSpecificMonster(int target) {
 		return this.monsterList.get(target);
 	}

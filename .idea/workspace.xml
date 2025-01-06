@@ -4,13 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="2e690723-9a46-4f37-9792-65676d313440" name="Changes" comment="Added Attack animation after selecting">
+    <list default="true" id="2e690723-9a46-4f37-9792-65676d313440" name="Changes" comment="Updated Efficiency with FramesManager">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Project/src/core/Manager/HandleManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/Project/src/core/Manager/HandleManager.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Project/src/core/Manager/SpriteAnimation.java" beforeDir="false" afterPath="$PROJECT_DIR$/Project/src/core/Manager/SpriteAnimation.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Project/src/core/Monsters/Ghost.java" beforeDir="false" afterPath="$PROJECT_DIR$/Project/src/core/Monsters/Ghost.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Project/src/core/Manager/MonsterManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/Project/src/core/Manager/MonsterManager.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Project/src/core/Monsters/Monster.java" beforeDir="false" afterPath="$PROJECT_DIR$/Project/src/core/Monsters/Monster.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Project/src/core/Player.java" beforeDir="false" afterPath="$PROJECT_DIR$/Project/src/core/Player.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -359,7 +357,15 @@
       <option name="project" value="LOCAL" />
       <updated>1736154481196</updated>
     </task>
-    <option name="localTasksCounter" value="22" />
+    <task id="LOCAL-00022" summary="Updated Efficiency with FramesManager">
+      <option name="closed" value="true" />
+      <created>1736167587135</created>
+      <option name="number" value="00022" />
+      <option name="presentableId" value="LOCAL-00022" />
+      <option name="project" value="LOCAL" />
+      <updated>1736167587135</updated>
+    </task>
+    <option name="localTasksCounter" value="23" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -395,6 +401,7 @@
     <MESSAGE value="Able to implement HandleManager to smoothly switch between Selection" />
     <MESSAGE value="Removed Commenting" />
     <MESSAGE value="Added Attack animation after selecting" />
-    <option name="LAST_COMMIT_MESSAGE" value="Added Attack animation after selecting" />
+    <MESSAGE value="Updated Efficiency with FramesManager" />
+    <option name="LAST_COMMIT_MESSAGE" value="Updated Efficiency with FramesManager" />
   </component>
 </project>

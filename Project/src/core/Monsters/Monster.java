@@ -23,8 +23,12 @@ public class Monster {
 	        this.health = 0; // Health cannot go negative
 	    }
 		System.out.println(this.name + " has taken " + damageTaken + " of damage!");
-		
+
+		//DAMAGE ANIMATION
+		this.monsterAnimation.startHurtAnimation();
+
 		if (this.health <= 0) {
+			this.monsterAnimation.startDeathAnimation();
 			this.defeatedMsg();
 		}
 	}

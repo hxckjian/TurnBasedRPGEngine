@@ -4,11 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="2e690723-9a46-4f37-9792-65676d313440" name="Changes" comment="Able to use pointer to choose between enemies">
-      <change afterPath="$PROJECT_DIR$/Project/src/core/Manager/HandleManager.java" afterDir="false" />
+    <list default="true" id="2e690723-9a46-4f37-9792-65676d313440" name="Changes" comment="Able to implement HandleManager to smoothly switch between Selection">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Project/src/core/Manager/GameApp.java" beforeDir="false" afterPath="$PROJECT_DIR$/Project/src/core/Manager/GameApp.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Project/src/core/Manager/MenuManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/Project/src/core/Manager/MenuManager.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Project/src/core/Manager/MonsterManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/Project/src/core/Manager/MonsterManager.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -334,7 +332,15 @@
       <option name="project" value="LOCAL" />
       <updated>1736134697761</updated>
     </task>
-    <option name="localTasksCounter" value="19" />
+    <task id="LOCAL-00019" summary="Able to implement HandleManager to smoothly switch between Selection">
+      <option name="closed" value="true" />
+      <created>1736147057683</created>
+      <option name="number" value="00019" />
+      <option name="presentableId" value="LOCAL-00019" />
+      <option name="project" value="LOCAL" />
+      <updated>1736147057683</updated>
+    </task>
+    <option name="localTasksCounter" value="20" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -367,6 +373,7 @@
     <MESSAGE value="Added pointer spriter to enemy sprite" />
     <MESSAGE value="Added Menu Manager" />
     <MESSAGE value="Able to use pointer to choose between enemies" />
-    <option name="LAST_COMMIT_MESSAGE" value="Able to use pointer to choose between enemies" />
+    <MESSAGE value="Able to implement HandleManager to smoothly switch between Selection" />
+    <option name="LAST_COMMIT_MESSAGE" value="Able to implement HandleManager to smoothly switch between Selection" />
   </component>
 </project>

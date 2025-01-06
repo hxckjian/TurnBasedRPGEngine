@@ -49,11 +49,9 @@ public class MonsterManager {
 				if (currentIndex < this.getMonsterSize() - 1) currentIndex++;
 				break;
 			case ENTER:
-				System.out.println("KILL HIMM!!!");
 //				executeMenuItem(currentIndex);
 				break;
 			case ESCAPE:
-//				GameApp.scene.setOnKeyPressed(event -> menuManager.handleKeyPress(event.getCode()));
 				HandleManager.getInstance().MenuSelection();
 				break;
 			default:

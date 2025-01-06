@@ -26,10 +26,7 @@ import javafx.scene.control.Button;
 import java.net.URL;
 
 public class GameApp extends Application {
-//    private StackPane[] menuPanes;
-//    public static Scene scene = null;
     private int currentIndex = 0;
-//    private MonsterManager monsterManager = MonsterManager.createRandomMonsterManager(2);
     private MonsterManager monsterManager;
     public Scene scene = null;
 //    private MenuItem[] menuItems;
@@ -39,20 +36,15 @@ public class GameApp extends Application {
 
         BorderPane root = new BorderPane();
         root.setStyle("-fx-background-color: black;");
-//        scene = new Scene(root, 960, 720);
+
         this.initialize(root);
 
         setupGame(root);
 
-//        String[] menuOptions = {"Attack", "Items", "Skill"};
-//        MenuManager menuManager = new MenuManager(menuOptions, Pos.CENTER, 10,
-//                this.monsterManager);
         root.setBottom(HandleManager.getInstance().getMenuManager().getMenuBox());
 
         // Set up the scene and stage
         HandleManager.getInstance().MenuSelection();
-//        scene.setOnKeyPressed(event -> menuManager.handleKeyPress(event.getCode()));
-
 
         primaryStage.setTitle("Turn-based RPG");
         primaryStage.setScene(scene);
@@ -60,6 +52,7 @@ public class GameApp extends Application {
         root.requestFocus();
     }
 
+    //TO BE EDITED IF NEEDED
     private void initialize(Pane root) {
         scene = new Scene(root, 960, 720);
         MonsterManager monsterManager = MonsterManager.createRandomMonsterManager(2);

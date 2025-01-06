@@ -6,7 +6,10 @@ import javafx.geometry.Rectangle2D;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.animation.Timeline;
+import javafx.scene.layout.StackPane;
 import javafx.util.Duration;
+
+import java.awt.*;
 
 public class SpriteAnimation {
     private ImageView spriteView = new ImageView();
@@ -23,17 +26,19 @@ public class SpriteAnimation {
     private int frameCount;
     private boolean flipHorizontal;
     private boolean flipVertical;
+    private FrameManager frameManager;
 
     private SpriteAnimation(String imageIdlePath, String imageAttackPath, String imageHurtPath, String imageDeathPath,
 //                           double posX, double posY,
                            int frameWidth, int frameHeight, int scale, int frameCount,
+                           int attackWidth, int attackFrames,
+                           int hurtWidth, int hurtFrames,
+                           int deathWidth, int deathFrames,
                            boolean flipHorizontal, boolean flipVertical) {
         this.imageIdlePath = imageIdlePath;
         this.imageAttackPath = imageAttackPath;
         this.imageHurtPath = imageHurtPath;
         this.imageDeathPath = imageDeathPath;
-//        this.posX = posX;
-//        this.posY = posY;
         this.posX = 0;
         this.posY = 0;
         this.frameWidth = frameWidth;
@@ -42,6 +47,11 @@ public class SpriteAnimation {
         this.frameCount = frameCount;
         this.flipHorizontal = flipHorizontal;
         this.flipVertical = flipVertical;
+        this.frameManager =  new FrameManager(frameWidth, frameCount,
+         attackWidth,  attackFrames,
+         hurtWidth,  hurtFrames,
+         deathWidth,  deathFrames);
+
         this.checkFlip();
     }
 
@@ -59,7 +69,7 @@ public class SpriteAnimation {
         this.frameCount = original.frameCount;
         this.flipHorizontal = original.flipHorizontal;
         this.flipVertical = original.flipVertical;
-
+        this.frameManager = original.frameManager;
         // Initialize ImageView with a new Image based on the original path
         this.spriteView = new ImageView();
         this.checkFlip(); // Sets up the ImageView based on current paths and flip state
@@ -71,19 +81,31 @@ public class SpriteAnimation {
     public static SpriteAnimation of(String imageIdlePath, String imageAttackPath, String imageHurtPath, String imageDeathPath,
 //                                     double posX, double posY,
                                      int frameWidth, int frameHeight, int scale, int frameCount,
+                                     int attackWidth, int attackFrames,
+                                     int hurtWidth, int hurtFrames,
+                                     int deathWidth, int deathFrames,
                                      boolean flipHorizontal, boolean flipVertical) {
         return new SpriteAnimation(imageIdlePath, imageAttackPath, imageHurtPath, imageDeathPath,
 //                posX, posY,
                 frameWidth, frameHeight, scale, frameCount,
+                attackWidth,  attackFrames,
+                hurtWidth,  hurtFrames,
+                deathWidth,  deathFrames,
                 flipHorizontal, flipVertical);
     }
 
     public static SpriteAnimation idle(String imageIdlePath,
                                      int frameWidth, int frameHeight, int scale, int frameCount,
+                                       int attackWidth, int attackFrames,
+                                       int hurtWidth, int hurtFrames,
+                                       int deathWidth, int deathFrames,
                                      boolean flipHorizontal, boolean flipVertical) {
         return new SpriteAnimation(imageIdlePath, null, null, null,
 //                0, 0,
                 frameWidth, frameHeight, scale, frameCount,
+                attackWidth,  attackFrames,
+                hurtWidth,  hurtFrames,
+                deathWidth,  deathFrames,
                 flipHorizontal, flipVertical);
     }
 
@@ -134,33 +156,34 @@ public class SpriteAnimation {
     public void startIdleAnimation() {
         this.spriteView.setTranslateX(0); // Adjust this value to control the overlap
         this.spriteView.setTranslateY(0);
-        this.playAnimation(this.imageIdlePath, this.frameWidth, this.frameCount, true);
+//        this.playAnimation(this.imageIdlePath, this.frameWidth, this.frameCount, true);
+        this.playAnimation(this.imageIdlePath, this.frameManager.idleWidth, this.frameManager.idleFrames, true);
     }
 
-    public void startAttackAnimation(int adjustedImageWidth, int attackFrameCount) {
+    public void startAttackAnimation() {
 //        this.spriteView.setTranslateX(-96); // Adjust this value to control the overlap
-        this.spriteView.setTranslateX(-(adjustedImageWidth * this.scale / 4));
+        this.spriteView.setTranslateX(-(this.frameManager.adjustedAttackWidth * this.scale / 4));
         this.spriteView.setTranslateY(0);
-        this.playAnimation(this.imageAttackPath, adjustedImageWidth, attackFrameCount, false);
+        this.playAnimation(this.imageAttackPath, this.frameManager.adjustedAttackWidth, this.frameManager.attackFrames, false);
         // Switch back to idle after attack completes
         this.currentAnimation.setOnFinished(e -> startIdleAnimation());
     }
 
-    public void startHurtAnimation(int adjustedImageWidth, int hurtFrameCount) {
-        this.playAnimation(this.imageHurtPath, adjustedImageWidth, hurtFrameCount, false);
+    public void startHurtAnimation() {
+        this.playAnimation(this.imageHurtPath, this.frameManager.adjustedHurtWidth, this.frameManager.hurtFrames, false);
         // Switch back to idle after hurt completes
         // if check dead, start Death Animation and stop, else start Idle Animation ***
         this.currentAnimation.setOnFinished(e -> startIdleAnimation());
     }
 
-    public void startDeathAnimation(int adjustedImageWidth, int deathFrameCount) {
-        this.playAnimation(this.imageDeathPath, adjustedImageWidth, deathFrameCount, false);
+    public void startDeathAnimation() {
+        this.playAnimation(this.imageDeathPath, this.frameManager.adjustedDeathWidth, this.frameManager.deathFrames, false);
         this.currentAnimation.setOnFinished(e -> {
             // Calculate the position of the last frame in the sprite sheet
-            double lastFrameX = (deathFrameCount - 1) * adjustedImageWidth * this.scale;
+            double lastFrameX = (this.frameManager.deathFrames - 1) * this.frameManager.adjustedDeathWidth * this.scale;
 
             // Set the viewport to display only the last frame
-            this.spriteView.setViewport(new Rectangle2D(lastFrameX, 0, adjustedImageWidth * this.scale, this.frameHeight * this.scale));
+            this.spriteView.setViewport(new Rectangle2D(lastFrameX, 0, this.frameManager.adjustedDeathWidth * this.scale, this.frameHeight * this.scale));
         });
     }
 
@@ -178,6 +201,43 @@ public class SpriteAnimation {
         String pointerPath = "file:/Users/hockjianteh/intellij turn-based-rpg/TurnBasedRPGEngine/Project/artwork/Pointer.png";
         return SpriteAnimation.idle(pointerPath,
                 32, 32, scale,8,
+                0,  0,
+                0,  0,
+                0,  0,
                 flipHorizontal, flipVertical);
     }
-}
+
+    private static class FrameManager {
+        private int idleWidth;
+        private int idleFrames;
+        private int adjustedAttackWidth;
+        private int attackFrames;
+        private int adjustedHurtWidth;
+        private int hurtFrames;
+        private int adjustedDeathWidth;
+        private int deathFrames;
+
+        public FrameManager(int idleWidth, int idleFrames,
+                             int adjustedAttackWidth, int attackFrames,
+                             int adjustedHurtWidth, int hurtFrames,
+                             int adjustedDeathWidth, int deathFrames) {
+            this.idleWidth = idleWidth;
+            this.idleFrames = idleFrames;
+            this.adjustedAttackWidth = adjustedAttackWidth;
+            this.attackFrames = attackFrames;
+            this.adjustedHurtWidth = adjustedHurtWidth;
+            this.hurtFrames = hurtFrames;
+            this.adjustedDeathWidth = adjustedDeathWidth;
+            this.deathFrames = deathFrames;
+        }
+
+//        public static core.Manager.FrameManager creation(int idleWidth, int idleFrames,
+//                                                         int adjustedAttackWidth, int attackFrames,
+//                                                         int adjustedHurtWidth, int hurtFrames,
+//                                                         int adjustedDeathWidth, int deathFrames) {
+//            return new core.Manager.FrameManager(idleWidth, idleFrames,
+//                    adjustedAttackWidth, attackFrames,
+//                    adjustedHurtWidth, hurtFrames,
+//                    adjustedDeathWidth, deathFrames);
+//        }
+    }}

@@ -53,6 +53,9 @@ public class HandleManager {
         Player player = this.playerManager.getSpecificPlayer(0);
         Monster target = this.monsterManager.getSpecificMonster(targetIndex);
         player.basicAttack(target);
+
+        //Return to Menu Selection
+        this.MenuSelection();
     }
 
     public Scene getScene() {

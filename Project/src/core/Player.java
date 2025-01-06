@@ -41,6 +41,9 @@ public class Player {
 	String playerDeathPath = "file:/Users/hockjianteh/intellij turn-based-rpg/TurnBasedRPGEngine/Project/artwork/Player/character_ninja_death.png";
 	private SpriteAnimation playerSpriteAnimation = SpriteAnimation.of(playerPath, playerAttackPath, playerHurtPath, playerDeathPath,
 			64, 64, 3,14,
+			128, 6,
+			64, 2,
+			128, 5,
 			true, false);
 
 	public Player() {
@@ -90,7 +93,7 @@ public class Player {
 	    System.out.println(this.name + " has dealt " + damageDealt + " damage to " + monster.toString());
 
 		//ATTACK ANIMATION
-		this.playerSpriteAnimation.startAttackAnimation(128, 6);
+		this.playerSpriteAnimation.startAttackAnimation();
 	}
 	
 	public void useItem(Item item) {

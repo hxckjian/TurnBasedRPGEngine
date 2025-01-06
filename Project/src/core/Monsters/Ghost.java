@@ -24,10 +24,11 @@ public class Ghost extends Monster {
         SpriteAnimation ghostSpriteAnimation = SpriteAnimation.of(ghostPath, ghostAttackPath, ghostHurtPath, ghostDeathPath,
 //                0,0,
                 64, 64, 3,13,
+                128, 26,
+                64, 2,
+                64, 13,
                 false, false);
         return new Ghost(ghostSpriteAnimation);
     }
-
-
 }
 

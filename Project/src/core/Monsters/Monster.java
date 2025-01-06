@@ -28,6 +28,7 @@ public class Monster {
 			this.defeatedMsg();
 		}
 	}
+
 	
 	public void basicAttack(Player player) {
 		System.out.println("Monster has used light Attack!");

@@ -100,7 +100,7 @@ public class MenuManager {
                     .getPlayerManager()
                     .getSpecificPlayer(0)
                     .getPlayerSpriteAnimation()
-                    .startAttackAnimation(128, 6);
+                    .startAttackAnimation();
             System.out.println("Test");
 
         }

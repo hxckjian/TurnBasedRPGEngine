@@ -4,12 +4,19 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="2e690723-9a46-4f37-9792-65676d313440" name="Changes" comment="Added pointer spriter to enemy sprite">
-      <change afterPath="$PROJECT_DIR$/Project/src/core/Manager/MenuManager.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Project/src/core/Monsters/Ghost.java" afterDir="false" />
+    <list default="true" id="2e690723-9a46-4f37-9792-65676d313440" name="Changes" comment="Added Menu Manager">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Project/src/core/Manager/BattleManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/Project/src/core/Manager/BattleManager.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Project/src/core/Manager/GameApp.java" beforeDir="false" afterPath="$PROJECT_DIR$/Project/src/core/Manager/GameApp.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Project/src/core/Manager/MenuItem.java" beforeDir="false" afterPath="$PROJECT_DIR$/Project/src/core/Manager/MenuItem.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Project/src/core/Manager/MenuManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/Project/src/core/Manager/MenuManager.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Project/src/core/Manager/MonsterFactory.java" beforeDir="false" afterPath="$PROJECT_DIR$/Project/src/core/Manager/MonsterFactory.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Project/src/core/Manager/MonsterManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/Project/src/core/Manager/MonsterManager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Project/src/core/Manager/SpriteAnimation.java" beforeDir="false" afterPath="$PROJECT_DIR$/Project/src/core/Manager/SpriteAnimation.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Project/src/core/Monsters/Ghost.java" beforeDir="false" afterPath="$PROJECT_DIR$/Project/src/core/Monsters/Ghost.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Project/src/core/Monsters/Goblin.java" beforeDir="false" afterPath="$PROJECT_DIR$/Project/src/core/Monsters/Goblin.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Project/src/core/Monsters/Monster.java" beforeDir="false" afterPath="$PROJECT_DIR$/Project/src/core/Monsters/Monster.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Project/src/core/Monsters/Slime.java" beforeDir="false" afterPath="$PROJECT_DIR$/Project/src/core/Monsters/Slime.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -318,7 +325,15 @@
       <option name="project" value="LOCAL" />
       <updated>1735978132953</updated>
     </task>
-    <option name="localTasksCounter" value="17" />
+    <task id="LOCAL-00017" summary="Added Menu Manager">
+      <option name="closed" value="true" />
+      <created>1736055714622</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1736055714622</updated>
+    </task>
+    <option name="localTasksCounter" value="18" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -349,6 +364,7 @@
     <MESSAGE value="Added player hurt and death functionality" />
     <MESSAGE value="Added pointer spriter and functionality" />
     <MESSAGE value="Added pointer spriter to enemy sprite" />
-    <option name="LAST_COMMIT_MESSAGE" value="Added pointer spriter to enemy sprite" />
+    <MESSAGE value="Added Menu Manager" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added Menu Manager" />
   </component>
 </project>

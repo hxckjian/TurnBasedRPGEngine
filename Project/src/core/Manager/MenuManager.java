@@ -1,6 +1,10 @@
 package core.Manager;
 
+import core.Monsters.Monster;
+import javafx.event.EventHandler;
 import javafx.geometry.Insets;
+import javafx.scene.Scene;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
 import javafx.scene.control.Label;
@@ -13,10 +17,15 @@ public class MenuManager {
     private VBox menuBox;
     private MenuItem[] menuItems;
     private int currentIndex = 0;
+    private Scene scene;
+    private MonsterManager monsterManager;
 
-    public MenuManager(String[] labels, Pos position, double spacing) {
+    public MenuManager(String[] labels, Pos position, double spacing, Scene scene,
+                       MonsterManager monsterManager) {
         menuBox = new VBox(spacing);
         menuBox.setAlignment(position);
+        this.scene = scene;
+        this.monsterManager = monsterManager;
         initializeMenuItems(labels);
     }
 
@@ -27,11 +36,7 @@ public class MenuManager {
             label.setFont(new Font("Arial", 16));
             label.setTextFill(Color.WHITE);
 
-            String pointerPath = "file:/Users/hockjianteh/intellij turn-based-rpg/TurnBasedRPGEngine/Project/artwork/Pointer.png";
-            SpriteAnimation pointerAnimation = SpriteAnimation.idle(pointerPath,
-                    32, 32, 1,8,
-                    false, false);
-
+            SpriteAnimation pointerAnimation = SpriteAnimation.pointerAnimation(1, false, false);
             StackPane stackPane = new StackPane();
             stackPane.getChildren().add(pointerAnimation.getSpriteView());
             stackPane.getChildren().add(label);
@@ -59,13 +64,14 @@ public class MenuManager {
                 break;
             case ENTER:
                 executeMenuItem(currentIndex);
-                System.out.println("Entered key");
                 break;
             default:
                 // Handle other keys if necessary
                 break;
         }
-        updateSelection();
+        if (keyCode != KeyCode.ENTER) {
+            updateSelection();
+        }
     }
 
     private void updateSelection() {
@@ -85,6 +91,12 @@ public class MenuManager {
         // Implement actions based on the selected menu item
 //        System.out.println("Selected: " + menuItems[index].getLabel().getText());
         // For example, start game, open settings, exit, etc.
+        if (index == 0) {
+            System.out.println("ATTACK!!!!");
+            this.menuItems[0].animation.removeAnimation();
+            this.monsterManager.getSpecificMonster(0).selectedMonster();
+            this.scene.setOnKeyPressed(event -> this.monsterManager.handleKeyPress(event.getCode()));
+        }
     }
 
     // Inner class to represent menu items

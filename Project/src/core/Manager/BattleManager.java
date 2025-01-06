@@ -36,7 +36,7 @@ public class BattleManager {
 	}
 
 	public static BattleManager createBattle() {
-		MonsterManager monsterManager = MonsterManager.createRandomMonsterManager(2);
+			MonsterManager monsterManager = MonsterManager.createRandomMonsterManager(2);
 		PlayerManager playerManager = PlayerManager.of(new Player());
 		ItemManager itemManager = new ItemManager();
 

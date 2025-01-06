@@ -25,15 +25,17 @@ public class SpriteAnimation {
     private boolean flipVertical;
 
     private SpriteAnimation(String imageIdlePath, String imageAttackPath, String imageHurtPath, String imageDeathPath,
-                           double posX, double posY,
+//                           double posX, double posY,
                            int frameWidth, int frameHeight, int scale, int frameCount,
                            boolean flipHorizontal, boolean flipVertical) {
         this.imageIdlePath = imageIdlePath;
         this.imageAttackPath = imageAttackPath;
         this.imageHurtPath = imageHurtPath;
         this.imageDeathPath = imageDeathPath;
-        this.posX = posX;
-        this.posY = posY;
+//        this.posX = posX;
+//        this.posY = posY;
+        this.posX = 0;
+        this.posY = 0;
         this.frameWidth = frameWidth;
         this.frameHeight = frameHeight;
         this.scale = scale;
@@ -43,12 +45,35 @@ public class SpriteAnimation {
         this.checkFlip();
     }
 
+    //Copy Constructor
+    public SpriteAnimation(SpriteAnimation original) {
+        this.imageIdlePath = original.imageIdlePath;
+        this.imageAttackPath = original.imageAttackPath;
+        this.imageHurtPath = original.imageHurtPath;
+        this.imageDeathPath = original.imageDeathPath;
+        this.posX = original.posX;
+        this.posY = original.posY;
+        this.frameWidth = original.frameWidth;
+        this.frameHeight = original.frameHeight;
+        this.scale = original.scale;
+        this.frameCount = original.frameCount;
+        this.flipHorizontal = original.flipHorizontal;
+        this.flipVertical = original.flipVertical;
+
+        // Initialize ImageView with a new Image based on the original path
+        this.spriteView = new ImageView();
+        this.checkFlip(); // Sets up the ImageView based on current paths and flip state
+
+        // Handle animation separately if needed, as Timeline does not need copying unless it is running
+        this.currentAnimation = null;  // Optionally reinitialize this if required
+    }
+
     public static SpriteAnimation of(String imageIdlePath, String imageAttackPath, String imageHurtPath, String imageDeathPath,
-                                     double posX, double posY,
+//                                     double posX, double posY,
                                      int frameWidth, int frameHeight, int scale, int frameCount,
                                      boolean flipHorizontal, boolean flipVertical) {
         return new SpriteAnimation(imageIdlePath, imageAttackPath, imageHurtPath, imageDeathPath,
-                posX, posY,
+//                posX, posY,
                 frameWidth, frameHeight, scale, frameCount,
                 flipHorizontal, flipVertical);
     }
@@ -57,7 +82,7 @@ public class SpriteAnimation {
                                      int frameWidth, int frameHeight, int scale, int frameCount,
                                      boolean flipHorizontal, boolean flipVertical) {
         return new SpriteAnimation(imageIdlePath, null, null, null,
-                0, 0,
+//                0, 0,
                 frameWidth, frameHeight, scale, frameCount,
                 flipHorizontal, flipVertical);
     }
@@ -138,5 +163,13 @@ public class SpriteAnimation {
             currentIndex = 0; // Reset index if it exceeds the frame count
         }
         spriteView.setViewport(new Rectangle2D(currentIndex * frameWidth * this.scale, 0, frameWidth * this.scale, this.frameHeight * this.scale));
+    }
+
+    //Factory Pointer Animation
+    public static SpriteAnimation pointerAnimation(int scale, boolean flipHorizontal, boolean flipVertical) {
+        String pointerPath = "file:/Users/hockjianteh/intellij turn-based-rpg/TurnBasedRPGEngine/Project/artwork/Pointer.png";
+        return SpriteAnimation.idle(pointerPath,
+                32, 32, scale,8,
+                flipHorizontal, flipVertical);
     }
 }

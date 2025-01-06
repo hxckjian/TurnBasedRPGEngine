@@ -1,16 +1,20 @@
 package core.Monsters;
 
+import core.Manager.SpriteAnimation;
 import core.Player;
 
 public class Monster {
 	private String name;
 	private int health;
 	private int attackDamage;
+	private SpriteAnimation pointerAnimation = SpriteAnimation.pointerAnimation(2,false,false);
+	private SpriteAnimation monsterAnimation;
 	
-	public Monster(String name, int health, int attackDamage) {
+	public Monster(String name, int health, int attackDamage, SpriteAnimation monsterAnimation) {
 		this.name = name;
 		this.health = health;
 		this.attackDamage = attackDamage;
+		this.monsterAnimation = monsterAnimation;
 	}
 	
 	public void takeDamage(int damageTaken) {
@@ -41,9 +45,26 @@ public class Monster {
 	public int getAttackDamage() {
 		return this.attackDamage;
 	}
+
+	//Immutable
+	public SpriteAnimation getMonsterAnimation() {
+		return new SpriteAnimation(this.monsterAnimation);
+	}
+
+	public SpriteAnimation getPointerAnimation() {
+		return this.pointerAnimation;
+	}
 	
 	public void defeatedMsg() {
 		System.out.println(this.name + " has been defeated!");
+	}
+
+	public void selectedMonster() {
+		this.pointerAnimation.startIdleAnimation();
+	}
+
+	public void unselectedMonster() {
+		this.pointerAnimation.removeAnimation();
 	}
 	
 	@Override

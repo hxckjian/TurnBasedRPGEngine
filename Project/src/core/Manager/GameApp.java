@@ -1,5 +1,6 @@
 package core.Manager;
 
+import core.Monsters.Monster;
 import core.Player;
 
 import javafx.animation.KeyFrame;
@@ -26,24 +27,28 @@ import java.net.URL;
 
 public class GameApp extends Application {
 //    private StackPane[] menuPanes;
+//    public static Scene scene = null;
     private int currentIndex = 0;
-    private MenuItem[] menuItems;
+    private MonsterManager monsterManager = MonsterManager.createRandomMonsterManager(2);
+//    private MenuItem[] menuItems;
 
     @Override
     public void start(Stage primaryStage) {
 
         BorderPane root = new BorderPane();
         root.setStyle("-fx-background-color: black;");
-
-        String[] menuOptions = {"Start Game", "Options", "Exit"};
-        MenuManager menuManager = new MenuManager(menuOptions, Pos.CENTER, 10);
-
-        root.setBottom(menuManager.getMenuBox());
-        // Set up the scene and stage
         Scene scene = new Scene(root, 960, 720);
-        scene.setOnKeyPressed(event -> menuManager.handleKeyPress(event.getCode()));
 
         setupGame(root);
+
+        String[] menuOptions = {"Attack", "Items", "Skill"};
+        MenuManager menuManager = new MenuManager(menuOptions, Pos.CENTER, 10, scene,
+                this.monsterManager);
+        root.setBottom(menuManager.getMenuBox());
+
+        // Set up the scene and stage
+        scene.setOnKeyPressed(event -> menuManager.handleKeyPress(event.getCode()));
+
 
         primaryStage.setTitle("Turn-based RPG");
         primaryStage.setScene(scene);
@@ -75,35 +80,35 @@ public class GameApp extends Application {
         String playerHurtPath = "file:/Users/hockjianteh/intellij turn-based-rpg/TurnBasedRPGEngine/Project/artwork/Player/character_ninja_hurt.png";
         String playerDeathPath = "file:/Users/hockjianteh/intellij turn-based-rpg/TurnBasedRPGEngine/Project/artwork/Player/character_ninja_death.png";
         SpriteAnimation playerSpriteAnimation = SpriteAnimation.of(playerPath, playerAttackPath, playerHurtPath, playerDeathPath,
-                100,200,
+//                100,200,
                 64, 64, 3,14,
                 true, false);
         root.getChildren().add(playerSpriteAnimation.getSpriteView());
         playerSpriteAnimation.startIdleAnimation();
 
-        Button attackButton = new Button("Attack");
-        attackButton.setLayoutX(100); // Set X position
-        attackButton.setLayoutY(500); // Set Y position
-        root.getChildren().add(attackButton);
-
-        // Handling attack animation
-        attackButton.setOnAction(event -> playerSpriteAnimation.startAttackAnimation(128, 6));
-
-        Button hurtButton = new Button("Hurt");
-        hurtButton.setLayoutX(160); // Set X position
-        hurtButton.setLayoutY(500); // Set Y position
-        root.getChildren().add(hurtButton);
-
-        // Handling attack animation
-        hurtButton.setOnAction(event -> playerSpriteAnimation.startHurtAnimation(64, 2));
-
-        Button deathButton = new Button("Death");
-        deathButton.setLayoutX(200); // Set X position
-        deathButton.setLayoutY(500); // Set Y position
-        root.getChildren().add(deathButton);
-
-        // Handling attack animation
-        deathButton.setOnAction(event -> playerSpriteAnimation.startDeathAnimation(128, 5));
+//        Button attackButton = new Button("Attack");
+//        attackButton.setLayoutX(100); // Set X position
+//        attackButton.setLayoutY(500); // Set Y position
+//        root.getChildren().add(attackButton);
+//
+//        // Handling attack animation
+//        attackButton.setOnAction(event -> playerSpriteAnimation.startAttackAnimation(128, 6));
+//
+//        Button hurtButton = new Button("Hurt");
+//        hurtButton.setLayoutX(160); // Set X position
+//        hurtButton.setLayoutY(500); // Set Y position
+//        root.getChildren().add(hurtButton);
+//
+//        // Handling attack animation
+//        hurtButton.setOnAction(event -> playerSpriteAnimation.startHurtAnimation(64, 2));
+//
+//        Button deathButton = new Button("Death");
+//        deathButton.setLayoutX(200); // Set X position
+//        deathButton.setLayoutY(500); // Set Y position
+//        root.getChildren().add(deathButton);
+//
+//        // Handling attack animation
+//        deathButton.setOnAction(event -> playerSpriteAnimation.startDeathAnimation(128, 5));
 
         /*
          * *** Ghost ***
@@ -113,45 +118,48 @@ public class GameApp extends Application {
          * Death - 64px x 64px, 13 Frames
          */
 
-        String ghostPath = "file:/Users/hockjianteh/intellij turn-based-rpg/TurnBasedRPGEngine/Project/artwork/Ghost/character_ghost_idle.png";
-        String ghostAttackPath = "file:/Users/hockjianteh/intellij turn-based-rpg/TurnBasedRPGEngine/Project/artwork/Ghost/character_ghost_attack.png";
-        String ghostHurtPath = "file:/Users/hockjianteh/intellij turn-based-rpg/TurnBasedRPGEngine/Project/artwork/Ghost/character_ghost_hurt.png";
-        String ghostDeathPath = "file:/Users/hockjianteh/intellij turn-based-rpg/TurnBasedRPGEngine/Project/artwork/Ghost/character_ghost_death.png";
-        SpriteAnimation ghostSpriteAnimation = SpriteAnimation.of(ghostPath, ghostAttackPath, ghostHurtPath, ghostDeathPath,
-                0,0,
-                64, 64, 3,13,
-                false, false);
-        String pointerPath = "file:/Users/hockjianteh/intellij turn-based-rpg/TurnBasedRPGEngine/Project/artwork/Pointer.png";
-        SpriteAnimation pointerAnimation = SpriteAnimation.idle(pointerPath,
-                32, 32, 2,8,
-                false, false);
-        ImageView pixelArtView = ghostSpriteAnimation.getSpriteView();
-        ImageView pointerView = pointerAnimation.getSpriteView();
-        HBox hbox = new HBox(0); // Horizontal spacing between the views
-        hbox.setAlignment(Pos.CENTER_LEFT); // Ensures vertical centering of children
+//        String ghostPath = "file:/Users/hockjianteh/intellij turn-based-rpg/TurnBasedRPGEngine/Project/artwork/Ghost/character_ghost_idle.png";
+//        String ghostAttackPath = "file:/Users/hockjianteh/intellij turn-based-rpg/TurnBasedRPGEngine/Project/artwork/Ghost/character_ghost_attack.png";
+//        String ghostHurtPath = "file:/Users/hockjianteh/intellij turn-based-rpg/TurnBasedRPGEngine/Project/artwork/Ghost/character_ghost_hurt.png";
+//        String ghostDeathPath = "file:/Users/hockjianteh/intellij turn-based-rpg/TurnBasedRPGEngine/Project/artwork/Ghost/character_ghost_death.png";
+//        SpriteAnimation ghostSpriteAnimation = SpriteAnimation.of(ghostPath, ghostAttackPath, ghostHurtPath, ghostDeathPath,
+////                0,0,
+//                64, 64, 3,13,
+//                false, false);
+////        String pointerPath = "file:/Users/hockjianteh/intellij turn-based-rpg/TurnBasedRPGEngine/Project/artwork/Pointer.png";
+////        SpriteAnimation pointerAnimation = SpriteAnimation.idle(pointerPath,
+////                32, 32, 2,8,
+////                false, false);
+//        SpriteAnimation pointerAnimation = SpriteAnimation.pointerAnimation(2, false, false);
+//        ImageView pixelArtView = ghostSpriteAnimation.getSpriteView();
+//        ImageView pointerView = pointerAnimation.getSpriteView();
+//        HBox hbox = new HBox(0); // Horizontal spacing between the views
+//        hbox.setAlignment(Pos.CENTER_LEFT); // Ensures vertical centering of children
+//
+//        // Create and configure the pixelArtView
+////        pixelArtView.setFitHeight(100); // Example height, adjust as needed
+//        pixelArtView.setPreserveRatio(true);
+//
+//        // Create and configure the pointerView
+//        pointerView.setPreserveRatio(true);
+//        pointerView.setTranslateX(50); // Adjust this value to control the overlap
+//        pointerView.setTranslateY(0);
+//        // Add both ImageView to the HBox
+//        hbox.getChildren().addAll(pointerView, pixelArtView);
+//        hbox.setLayoutX(600);
+//        hbox.setLayoutY(200);
+//        root.getChildren().add(hbox);
+//        ghostSpriteAnimation.startIdleAnimation();
+//        pointerAnimation.startIdleAnimation();
 
-        // Create and configure the pixelArtView
-//        pixelArtView.setFitHeight(100); // Example height, adjust as needed
-        pixelArtView.setPreserveRatio(true);
 
-        // Create and configure the pointerView
-        pointerView.setPreserveRatio(true);
-        pointerView.setTranslateX(50); // Adjust this value to control the overlap
-        pointerView.setTranslateY(0);
-        // Add both ImageView to the HBox
-        hbox.getChildren().addAll(pointerView, pixelArtView);
-        hbox.setLayoutX(600);
-        hbox.setLayoutY(200);
-        root.getChildren().add(hbox);
-        ghostSpriteAnimation.startIdleAnimation();
-        pointerAnimation.startIdleAnimation();
-
-        SpriteAnimation ghostSpriteAnimation1 = SpriteAnimation.of(ghostPath, ghostAttackPath, ghostHurtPath, ghostDeathPath,
-                600,350,
-                64, 64, 3,13,
-                false, false);
-        root.getChildren().add(ghostSpriteAnimation1.getSpriteView());
-        ghostSpriteAnimation1.startIdleAnimation();
+        //SECOND MONSTER
+//        SpriteAnimation ghostSpriteAnimation1 = SpriteAnimation.of(ghostPath, ghostAttackPath, ghostHurtPath, ghostDeathPath,
+////                600,350,
+//                64, 64, 3,13,
+//                false, false);
+//        root.getChildren().add(ghostSpriteAnimation1.getSpriteView());
+//        ghostSpriteAnimation1.startIdleAnimation();
 
 //        Button attackButton1 = new Button("Attack");
 //        attackButton1.setLayoutX(600); // Set X position
@@ -160,6 +168,43 @@ public class GameApp extends Application {
 //
 //        // Handling attack animation
 //        attackButton1.setOnAction(event -> ghostSpriteAnimation.startAttackAnimation(128, 26));
+        setupMonsters(root);
+
+    }
+
+    public void setupMonsters(Pane root) {
+        int[] monsterPositions = {200, 500};
+        for (int i = 0; i < 2; i++) {
+            Monster currentMonster = this.monsterManager.getSpecificMonster(i);
+            SpriteAnimation monsterAnimation = currentMonster.getMonsterAnimation();
+            SpriteAnimation pointerAnimation = currentMonster.getPointerAnimation();
+            ImageView pixelArtView = monsterAnimation.getSpriteView();
+            ImageView pointerView = pointerAnimation.getSpriteView();
+
+            HBox hbox = new HBox(0); // Horizontal spacing between the views
+            hbox.setAlignment(Pos.CENTER_LEFT); // Ensures vertical centering of children
+
+            // Create and configure the pixelArtView
+//        pixelArtView.setFitHeight(100); // Example height, adjust as needed
+            pixelArtView.setPreserveRatio(true);
+
+            // Create and configure the pointerView
+            pointerView.setPreserveRatio(true);
+            pointerView.setTranslateX(50); // Adjust this value to control the overlap
+            pointerView.setTranslateY(0);
+            // Add both ImageView to the HBox
+            hbox.getChildren().addAll(pointerView, pixelArtView);
+
+            monsterAnimation.startIdleAnimation();
+//            pointerAnimation.startIdleAnimation();
+//            currentMonster.getPointerAnimation().startIdleAnimation();
+
+            //Position
+            hbox.setLayoutX(600);
+            hbox.setLayoutY(monsterPositions[i]);
+            root.getChildren().add(hbox);
+
+        }
 
     }
 

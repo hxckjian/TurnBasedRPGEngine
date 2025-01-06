@@ -4,9 +4,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 import core.Monsters.Monster;
+import javafx.scene.input.KeyCode;
 
 public class MonsterManager {
 	List<Monster> monsterList;
+	private int currentIndex = 0;
 	
 	private MonsterManager(List<Monster> monsterList) {
 		this.monsterList = monsterList;
@@ -34,6 +36,42 @@ public class MonsterManager {
 	
 	public int getMonsterSize() {
 		return this.monsterList.size();
+	}
+
+	public void handleKeyPress(KeyCode keyCode) {
+//		this.getSpecificMonster().selectedMonster();
+		switch (keyCode) {
+			case UP:
+				if (currentIndex > 0) currentIndex--;
+				break;
+			case DOWN:
+				if (currentIndex < this.getMonsterSize() - 1) currentIndex++;
+				break;
+			case ENTER:
+				System.out.println("KILL HIMM!!!");
+//				executeMenuItem(currentIndex);
+				break;
+			default:
+				// Handle other keys if necessary
+				break;
+		}
+		this.updateSelection();
+	}
+
+	private void updateSelection() {
+		for (int i = 0; i < this.getMonsterSize(); i++) {
+//            Label label = menuItems[i].getLabel();
+			if (i == currentIndex) {
+//                label.setTextFill(Color.RED); // Highlight the selected item
+//				System.out.println("Hi");
+//				System.out.println(i);
+//				this.getSpecificMonster(i).getPointerAnimation().startIdleAnimation();
+				this.getSpecificMonster(i).selectedMonster();
+			} else {
+//                label.setTextFill(Color.WHITE); // Revert others to default color
+				this.getSpecificMonster(i).unselectedMonster();
+			}
+		}
 	}
 	
 	public Monster getSpecificMonster(int target) {

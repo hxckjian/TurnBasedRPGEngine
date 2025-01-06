@@ -12,8 +12,8 @@ public class MonsterFactory {
 
     // Define the pool of monsters
     private static final Monster[] MONSTER_POOL = {
-            Slime.creation(),
-            Goblin.creation(),
+//            Slime.creation(),
+//            Goblin.creation(),
             Ghost.creation()
         // Add more monster types here
     };
@@ -34,7 +34,7 @@ public class MonsterFactory {
         int randomizedHealth = template.getHealth() + RANDOM.nextInt(21) - 10; // ±10 variation
         int randomizedAttack = template.getAttackDamage() + RANDOM.nextInt(3) - 1; // ±1 variation
         
-        return new Monster(template.toString(), Math.max(randomizedHealth, 1), Math.max(randomizedAttack, 1));
+        return new Monster(template.toString(), Math.max(randomizedHealth, 1), Math.max(randomizedAttack, 1), template.getMonsterAnimation());
     }
 
 }

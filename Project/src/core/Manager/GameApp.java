@@ -29,7 +29,9 @@ public class GameApp extends Application {
 //    private StackPane[] menuPanes;
 //    public static Scene scene = null;
     private int currentIndex = 0;
-    private MonsterManager monsterManager = MonsterManager.createRandomMonsterManager(2);
+//    private MonsterManager monsterManager = MonsterManager.createRandomMonsterManager(2);
+    private MonsterManager monsterManager;
+    public Scene scene = null;
 //    private MenuItem[] menuItems;
 
     @Override
@@ -37,23 +39,35 @@ public class GameApp extends Application {
 
         BorderPane root = new BorderPane();
         root.setStyle("-fx-background-color: black;");
-        Scene scene = new Scene(root, 960, 720);
+//        scene = new Scene(root, 960, 720);
+        this.initialize(root);
 
         setupGame(root);
 
-        String[] menuOptions = {"Attack", "Items", "Skill"};
-        MenuManager menuManager = new MenuManager(menuOptions, Pos.CENTER, 10, scene,
-                this.monsterManager);
-        root.setBottom(menuManager.getMenuBox());
+//        String[] menuOptions = {"Attack", "Items", "Skill"};
+//        MenuManager menuManager = new MenuManager(menuOptions, Pos.CENTER, 10,
+//                this.monsterManager);
+        root.setBottom(HandleManager.getInstance().getMenuManager().getMenuBox());
 
         // Set up the scene and stage
-        scene.setOnKeyPressed(event -> menuManager.handleKeyPress(event.getCode()));
+        HandleManager.getInstance().MenuSelection();
+//        scene.setOnKeyPressed(event -> menuManager.handleKeyPress(event.getCode()));
 
 
         primaryStage.setTitle("Turn-based RPG");
         primaryStage.setScene(scene);
         primaryStage.show();
         root.requestFocus();
+    }
+
+    private void initialize(Pane root) {
+        scene = new Scene(root, 960, 720);
+        MonsterManager monsterManager = MonsterManager.createRandomMonsterManager(2);
+        PlayerManager playerManager = PlayerManager.of(new Player());
+        String[] menuOptions = {"Attack", "Items", "Skill"};
+        MenuManager menuManager = new MenuManager(menuOptions, Pos.CENTER, 10,
+                monsterManager);
+        HandleManager.initialize(scene, menuManager, monsterManager, playerManager);
     }
 
     private void setupGame(Pane root) {
@@ -175,7 +189,7 @@ public class GameApp extends Application {
     public void setupMonsters(Pane root) {
         int[] monsterPositions = {200, 500};
         for (int i = 0; i < 2; i++) {
-            Monster currentMonster = this.monsterManager.getSpecificMonster(i);
+            Monster currentMonster = HandleManager.getInstance().getMonsterManager().getSpecificMonster(i);
             SpriteAnimation monsterAnimation = currentMonster.getMonsterAnimation();
             SpriteAnimation pointerAnimation = currentMonster.getPointerAnimation();
             ImageView pixelArtView = monsterAnimation.getSpriteView();

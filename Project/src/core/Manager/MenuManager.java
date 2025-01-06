@@ -17,15 +17,13 @@ public class MenuManager {
     private VBox menuBox;
     private MenuItem[] menuItems;
     private int currentIndex = 0;
-    private Scene scene;
-    private MonsterManager monsterManager;
+//    private MonsterManager monsterManager;
 
-    public MenuManager(String[] labels, Pos position, double spacing, Scene scene,
+    public MenuManager(String[] labels, Pos position, double spacing,
                        MonsterManager monsterManager) {
         menuBox = new VBox(spacing);
         menuBox.setAlignment(position);
-        this.scene = scene;
-        this.monsterManager = monsterManager;
+//        this.monsterManager = monsterManager;
         initializeMenuItems(labels);
     }
 
@@ -94,8 +92,7 @@ public class MenuManager {
         if (index == 0) {
             System.out.println("ATTACK!!!!");
             this.menuItems[0].animation.removeAnimation();
-            this.monsterManager.getSpecificMonster(0).selectedMonster();
-            this.scene.setOnKeyPressed(event -> this.monsterManager.handleKeyPress(event.getCode()));
+            HandleManager.getInstance().MonsterSelection();
         }
     }
 
@@ -108,5 +105,9 @@ public class MenuManager {
             this.pane = pane;
             this.animation = animation;
         }
+    }
+
+    public void selectFirstOption() {
+        this.menuItems[0].animation.startIdleAnimation();
     }
 }
